@@ -6,8 +6,6 @@ void Hooks::InitHooks()
 {
 	Teardown::Functions::GetAddresses();
 
-	Hooks::BaseHooks::HookMain();
-
 	Hooks::GLHooks::HookGlewInit();
 	Hooks::GLHooks::HookSwapBuffers();
 

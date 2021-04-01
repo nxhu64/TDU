@@ -14,6 +14,7 @@
 	- Used to rename the window
 	- Used to hook WndProc automatically when changing resolution (Window is created again everytime display settings are changed)
 	- Used to initialize everything, since it's called after SteamStub is done unpacking the game's exe (Prior to that, sigscans will fail)
+	- Used to hook Main again to re-obtain Game's pointer
 	- It was used for was manually handling the game's built in ImGui context, no longer doing that though
 */
 
@@ -25,8 +26,10 @@ tCreateWindowExA oCreateWindowExA;
 HWND hCreateWindowExA(DWORD dwExStyle, LPCSTR lpClassName, LPCSTR lpWindowName, DWORD dwStyle, int X, int Y, int nWidth, int nHeight, HWND hWndParent, HMENU hMenu, HINSTANCE hInstance, LPVOID lpParam)
 {
 	std::call_once(hasHookedFunctions, Hooks::InitHooks);
+
 	if (!lstrcmp(lpWindowName, "Teardown"))
 	{
+		Hooks::BaseHooks::HookMain();
 		char windowName[100] = "TDU ";
 		strcat(windowName, Globals::version.c_str());
 
