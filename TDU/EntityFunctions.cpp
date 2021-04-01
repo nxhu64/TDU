@@ -80,6 +80,6 @@ void Teardown::Functions::EntityFunctions::GetAddresses()
 	WriteLog(LogType::Address, "InitializeVox: 0x%p", GenVoxTexture);
 	WriteLog(LogType::Address, "GenVoxTexture: 0x%p", InitializeVox);
 
-	WriteLog(LogType::Address, "SetBodyDnamic", tdSetBodyDynamic);
-	WriteLog(LogType::Address, "InitializeBody", tdInitializeBody);
+	WriteLog(LogType::Address, "SetBodyDynamic: 0x%p", tdSetBodyDynamic);
+	WriteLog(LogType::Address, "InitializeBody: 0x%p", tdInitializeBody);
 }
