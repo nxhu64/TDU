@@ -1,13 +1,13 @@
-#include <iostream>
+#ifndef Logger
+#define Logger
 
-#define no_init_all
+#include <iostream>
 #include <Windows.h>
 #include <iomanip>
 
 #include "Config.h"
 
 #define WriteLog(logType, ...) Logger::LogInternal(__func__, __FILE__, logType, __VA_ARGS__)
-#define WriteSeparator(len) Logger::SeparatorInternal(len);
 
 enum class LogType
 {
@@ -19,11 +19,6 @@ enum class LogType
 
 namespace Logger
 {
-	inline void SeparatorInternal(int len)
-	{
-		std::cout << std::setfill('=') << std::setw(len) << "\n" << std::setfill(' ');
-;	}
-
 	template<char const*... Args_t>
 	inline void LogInternal(const char* funcName, const char* fullFileName, LogType type, const char* fmt, ...)
 	{
@@ -59,3 +54,5 @@ namespace Logger
 		}
 	}
 }
+
+#endif
