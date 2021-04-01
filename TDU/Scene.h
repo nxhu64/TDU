@@ -28,7 +28,11 @@ public:
 	Teardown::small_vector<void*>* pScreenList; //0x0280
 	Teardown::small_vector<void*>* pTriggerList; //0x0288
 	Teardown::small_vector<Script*>* pScriptList; //0x0290
-	char pad_0298[1544]; //0x0298
+	char pad_0298[48]; //0x0298
+	float distanceToBoundary; //0x02C8
+	char pad_02CC[612]; //0x02CC
+	Teardown::small_vector<glm::vec2*> Boundaries; //0x0530
+	char pad_0540[872]; //0x0540
 	Teardown::small_vector<Entity*> entityList2; //0x08A0
 	char pad_08B0[8624]; //0x08B0
 	void* (*pSomethingArray)[150]; //0x2A60
