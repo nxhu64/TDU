@@ -32,7 +32,7 @@ public:
 	float distanceToBoundary; //0x02C8
 	char pad_02CC[612]; //0x02CC
 	Teardown::small_vector<glm::vec2*> Boundaries; //0x0530
-	char pad_0540[872]; //0x0540
+	char pad_0540[864]; //0x0540
 	Teardown::small_vector<Entity*> entityList2; //0x08A0
 	char pad_08B0[8624]; //0x08B0
 	void* (*pSomethingArray)[150]; //0x2A60
