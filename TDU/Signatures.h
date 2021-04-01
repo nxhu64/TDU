@@ -32,6 +32,9 @@ namespace Signatures
 	// Right below the wglMakeCurrent call on the function that creates the window, xref "Failed to call wglMakeCurrent for OpenGL context 3.3" for context
 	inline Signature glewInit("\x48\x83\xEC\x28\xE8\x00\x00\x00\x00\x85\xC0\x75\x09", "xxxxx????xxxx");
 
+	inline Signature GetFilePath("\xE8\x00\x00\x00\x00\x90\x48\x8B\x4B\x78", "x????xxxxx"); // direct reference
+	inline Signature GetFilePathLua("\xE8\x00\x00\x00\x00\x90\x44\x88\x7C\x24\x00", "x????xxxxx?"); // direct reference
+
 	namespace LuaFunctions {
 		// You can find it by searching any functions that are not from the UI lib (i.e. SetTag, or IsBodyBroken)
 		inline Signature RegisterGameFunctions("\x40\x55\x48\x8D\xAC\x24\x00\x00\x00\x00\x48\x81\xEC\x00\x00\x00\x00\x48\xC7\x85\x00\x00\x00\x00\x00\x00\x00\x00", "xxxxxx????xxx????xxx????????");

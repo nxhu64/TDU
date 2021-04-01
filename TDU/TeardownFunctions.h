@@ -1,15 +1,17 @@
 #pragma once
 #include "Script.h"
 #include "Entities.h"
+#include "Types.h"
+#include "Lua.hpp"
 
 namespace Teardown
 {
 	namespace Functions
 	{
-		namespace Mem
+		namespace Utils
 		{
-			void* Alloc(size_t size);
-			void Free(void* memBlock);
+			Teardown::small_string* GetFilePath(Teardown::small_string ssPath);
+			Teardown::small_string* GetFilePathLua(lua_State* L, const char* ccPath);
 			void GetAddresses();
 		}
 
@@ -32,7 +34,7 @@ namespace Teardown
 			void GetAddresses();
 			Entity* GetEntityById(uint16_t entityId);
 
-			Vox* LoadVox(const char* path, const char* object, float Scale);
+			Vox* LoadVox(Teardown::small_string* voxPath, const char* object, float Scale);
 
 			void InitializeBody(Body* pBody);
 			void SetBodyDynamic(Body* pBody, bool Dynamic);

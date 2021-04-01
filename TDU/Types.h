@@ -4,7 +4,7 @@
 	https://github.com/SK83RJOSH/Teardown/blob/master/types.h
 */
 
-#include "TeardownFunctions.h"
+#include "MemoryFunctions.h"
 
 #include <cstring>
 #include <stdlib.h>
@@ -35,7 +35,7 @@ namespace Teardown
 
 			if (len > 15)
 			{
-				dst = (char*)Teardown::Functions::Mem::Alloc(sizeof(char) * (len + 1));
+				dst = (char*)Teardown::Mem::Alloc(sizeof(char) * (len + 1));
 
 				if (dst == nullptr)
 				{
@@ -44,7 +44,7 @@ namespace Teardown
 
 				if (m_StackBuffer[15])
 				{
-					Teardown::Functions::Mem::Free(m_HeapBuffer);
+					Teardown::Mem::Free(m_HeapBuffer);
 				}
 				else
 				{
@@ -62,7 +62,7 @@ namespace Teardown
 		~small_string() {
 			if (m_StackBuffer[15])
 			{
-				Teardown::Functions::Mem::Free(m_HeapBuffer);
+				Teardown::Mem::Free(m_HeapBuffer);
 			}
 		}
 

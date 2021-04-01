@@ -166,9 +166,6 @@
     <ClCompile Include="TDLua.cpp">
       <Filter>Source Files\Teardown\Lua</Filter>
     </ClCompile>
-    <ClCompile Include="MemoryFunctions.cpp">
-      <Filter>Source Files\Teardown\Functions</Filter>
-    </ClCompile>
     <ClCompile Include="TeardownFunctions.cpp">
       <Filter>Source Files\Teardown\Functions</Filter>
     </ClCompile>
@@ -192,6 +189,9 @@
     </ClCompile>
     <ClCompile Include="UtilLuaFunctions.cpp">
       <Filter>Source Files\CLuaFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="UtilFunctions.cpp">
+      <Filter>Source Files\Teardown\Functions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -332,6 +332,9 @@
     </ClInclude>
     <ClInclude Include="Globals.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryFunctions.h">
+      <Filter>Source Files\Teardown\Functions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

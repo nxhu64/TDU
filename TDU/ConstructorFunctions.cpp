@@ -4,6 +4,7 @@
 #include "Globals.h"
 #include "Logger.h"
 #include "Teardown.h"
+#include "MemoryFunctions.h"
 
 #include "Entities.h"
 #include "Script.h"
@@ -26,19 +27,19 @@ tEntityCCtor ScriptCCtor;
 
 Script* Teardown::Functions::Constructors::newScript(Entity* Parent)
 {
-	void* memAlloc = Teardown::Functions::Mem::Alloc(sizeof(Script));
+	void* memAlloc = Teardown::Mem::Alloc(sizeof(Script));
 	return (Script*)ScriptCCtor(memAlloc, Parent);
 }
 
 Body* Teardown::Functions::Constructors::newBody(Entity* Parent)
 {
-	void* memAlloc = Teardown::Functions::Mem::Alloc(sizeof(Body));
+	void* memAlloc = Teardown::Mem::Alloc(sizeof(Body));
 	return (Body*)BodyCCtor(memAlloc, Parent);
 }
 
 Shape* Teardown::Functions::Constructors::newShape(Entity* Parent)
 {
-	void* memAlloc = Teardown::Functions::Mem::Alloc(sizeof(Shape));
+	void* memAlloc = Teardown::Mem::Alloc(sizeof(Shape));
 	return (Shape*)ShapeCCtor(memAlloc, Parent);
 }
 
