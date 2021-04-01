@@ -91,7 +91,7 @@ public:
 	class Debugger* pDebugging; //0x0088
 	class Device* pDevice; //0x0090
 	Player* pPlayer; //0x0098
-	class LevelManager* pLevelManager; //0x00A0
+	void* pDataManager; //0x00A0
 	char pad_00A8[16]; //0x00A8
 	void* pData; //0x00B8
 	class modMgr* pModMgr; //0x00C0
