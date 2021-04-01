@@ -58,7 +58,7 @@ void Teardown::Lua::RunScript(std::string script)
 	
 	CLuaFunctions::RegisterCFunctions(L);
 
-	if (luaL_loadbuffer(L, script.c_str(), script.length(), "TDU Lua") || lua_pcall(L, 0, LUA_MULTRET, 0))
+	if (luaL_loadbuffer(L, script.c_str(), script.length(), "TDU Lua script") || lua_pcall(L, 0, LUA_MULTRET, 0))
 	{
 		const char* lastError = luaL_tolstring(L, -1, NULL);
 		WriteLog(LogType::Error, "Script error: %s", lastError);
