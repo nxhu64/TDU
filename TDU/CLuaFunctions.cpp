@@ -30,4 +30,7 @@ void CLuaFunctions::RegisterCFunctions(lua_State* L)
 
 	lua_pushcfunction(L, CLuaFunctions::EntityFunctions::InitializeBody);
 	lua_setglobal(L, "InitializeBody");
+
+	lua_pushcfunction(L, CLuaFunctions::UtilFunctions::Wait);
+	lua_setglobal(L, "Wait");
 }

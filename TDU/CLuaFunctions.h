@@ -16,5 +16,10 @@ namespace CLuaFunctions
 		int InitializeBody(lua_State* L);
 	}
 
+	namespace UtilFunctions
+	{
+		int Wait(lua_State* L);
+	}
+
 	void RegisterCFunctions(lua_State* L);
 }
