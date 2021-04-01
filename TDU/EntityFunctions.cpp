@@ -21,15 +21,13 @@ typedef Vox* (*tVoxFunction)	(Vox* pVox);
 tVoxFunction GenVoxTexture;
 tVoxFunction InitializeVox;
 
-Vox* Teardown::Functions::EntityFunctions::LoadVox(const char* path, const char* object, float Scale)
+Vox* Teardown::Functions::EntityFunctions::LoadVox(Teardown::small_string* voxPath, const char* object, float Scale)
 {
-	Teardown::small_string voxPath(path);
-	Teardown::small_string voxObject;
-
+	Teardown::small_string strobject;
 	if (object)
-		voxObject = Teardown::small_string(object);
+		strobject = Teardown::small_string(object);
 
-	Vox* newVox = tdLoadVox(&voxPath, &voxObject, Scale);
+	Vox* newVox = tdLoadVox(voxPath, &strobject, Scale);
 
 	if (!newVox)
 		return 0;
