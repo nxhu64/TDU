@@ -190,6 +190,9 @@
     <ClCompile Include="EntityFunctions.cpp">
       <Filter>Source Files\Teardown\Functions</Filter>
     </ClCompile>
+    <ClCompile Include="UtilLuaFunctions.cpp">
+      <Filter>Source Files\CLuaFunctions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLExterns.h">
