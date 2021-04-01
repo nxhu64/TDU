@@ -15,7 +15,7 @@
 #define SHOW_CONSOLE
 
 // Only useful when the game updates, so you can see which functions the signatures no longer work for
-#define PRINT_ADDRESSES
+//#define PRINT_ADDRESSES
 
 // Only print errors, ignore generic messages, addresses (this value overrides PRINT_ADDRESSES), and other stuff (Doesn't disable Lua's print cout)
 //#define PRINT_ERRORS_ONLY
