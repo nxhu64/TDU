@@ -64,7 +64,10 @@ int CLuaFunctions::EntityFunctions::LoadVox(lua_State* L)
 	if (argCount >= 4)
 		objName = luaL_checkstring(L, 4);
 
-	Vox* newVox = Teardown::Functions::EntityFunctions::LoadVox(voxPath, objName, scale);
+	Teardown::small_string* finalVoxPath = Teardown::Functions::Utils::GetFilePathLua(L, voxPath);
+	finalVoxPath = Teardown::Functions::Utils::GetFilePath(*finalVoxPath);
+
+	Vox* newVox = Teardown::Functions::EntityFunctions::LoadVox(finalVoxPath, objName, scale);
 
 	if (newVox)
 		pShape->pVox = newVox;
