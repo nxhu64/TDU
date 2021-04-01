@@ -1,6 +1,7 @@
 #pragma once
 #include "Types.h"
 #include "Entities.h"
+#include "Script.h"
 
 class Scene
 {
