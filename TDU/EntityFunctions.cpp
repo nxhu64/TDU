@@ -23,14 +23,15 @@ tVoxFunction InitializeVox;
 
 Vox* Teardown::Functions::EntityFunctions::LoadVox(Teardown::small_string* voxPath, const char* object, float Scale)
 {
-	Teardown::small_string strobject;
-	if (object)
-		strobject = Teardown::small_string(object);
+	Teardown::small_string objss(object);
 
-	Vox* newVox = tdLoadVox(voxPath, &strobject, Scale);
+	Vox* newVox = tdLoadVox(voxPath, &objss, Scale);
 
 	if (!newVox)
+	{
+		WriteLog(LogType::Error, "Couldn't load vox with path %s / object: %s", voxPath->c_str(), object);
 		return 0;
+	}
 
 	GenVoxTexture(newVox);
 	InitializeVox(newVox);
