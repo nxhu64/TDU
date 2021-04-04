@@ -1,25 +1,28 @@
 #pragma once
 #include "Lua.hpp"
+#include "Script.h"
 
 /*
-	Important:
-	This file should have a different name, or LuaFunctions.h/cpp should have a different name, cause it's gonna cause some confusion
+	This file should eventually have a different name, or LuaFunctions.h/cpp should have a different name, cause it's gonna cause some confusion
 */
+
+class retInfo
+{
+public:
+	lua_State* pL;
+	int retcount;
+	// Unk size
+};
 
 namespace CLuaFunctions
 {
 	namespace EntityFunctions
 	{
-		int CreateShape(lua_State* L);
-		int CreateBody(lua_State* L);
-		int LoadVox(lua_State* L);
-		int InitializeBody(lua_State* L);
+		int CreateBody(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		int CreateShape(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		int LoadVox(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		int InitializeBody(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 	}
 
-	namespace UtilFunctions
-	{
-		int Wait(lua_State* L);
-	}
-
-	void RegisterCFunctions(lua_State* L);
+	void RegisterCFunctions(ScriptCore_LuaState* pSCLS);
 }

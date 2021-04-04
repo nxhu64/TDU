@@ -2,31 +2,34 @@
 #include "TeardownFunctions.h"
 #include <Windows.h>
 
-int CLuaFunctions::EntityFunctions::CreateBody(lua_State* L)
+
+int CLuaFunctions::EntityFunctions::CreateBody(ScriptCore* pSC, lua_State*& L, retInfo* ret)
 {
 	int argCount = lua_gettop(L);
+
 	DWORD64 parent = 0;
 
 	bool isDynamic = false;
 
 	if (argCount >= 1)
+		isDynamic = lua_toboolean(L, 1);
+
+	if (argCount >= 2)
 	{
-		int parentId = luaL_checknumber(L, 1);
+		int parentId = lua_tointeger(L, 2);
 		if (parentId > 0)
 			parent = (DWORD64)Teardown::Functions::EntityFunctions::GetEntityById(parentId);
-	
-		if (argCount >= 3)
-			isDynamic = lua_toboolean(L, 2);
 	}
 
 	Body* newBody = Teardown::Functions::Constructors::newBody((Entity*)parent);
 	newBody->Dynamic = isDynamic;
 
-	lua_pushnumber(L, newBody->Id);
+	lua_pushinteger(ret->pL, newBody->Id);
+	++ret->retcount;
 	return 1;
 }
 
-int CLuaFunctions::EntityFunctions::CreateShape(lua_State* L)
+int CLuaFunctions::EntityFunctions::CreateShape(ScriptCore* pSC, lua_State*& L, retInfo* ret)
 {
 	int argCount = lua_gettop(L);
 	Entity* parent = 0;
@@ -38,11 +41,12 @@ int CLuaFunctions::EntityFunctions::CreateShape(lua_State* L)
 
 	Shape* newShape = Teardown::Functions::Constructors::newShape(parent);
 
-	lua_pushnumber(L, newShape->Id);
+	lua_pushinteger(ret->pL, newShape->Id);
+	++ret->retcount;
 	return 1;
 }
 
-int CLuaFunctions::EntityFunctions::LoadVox(lua_State* L)
+int CLuaFunctions::EntityFunctions::LoadVox(ScriptCore* pSC, lua_State*& L, retInfo* ret)
 {
 	int argCount = lua_gettop(L);
 
@@ -64,9 +68,11 @@ int CLuaFunctions::EntityFunctions::LoadVox(lua_State* L)
 	if (argCount >= 4)
 		objName = luaL_checkstring(L, 4);
 
-	Teardown::small_string* finalVoxPath = Teardown::Functions::Utils::GetFilePath(voxPath);
+	const char* filePath = Teardown::Functions::Utils::GetFilePathLua(pSC, voxPath);
+	filePath = Teardown::Functions::Utils::GetFilePath(filePath);
+	Teardown::small_string ssPath(filePath);
 
-	Vox* newVox = Teardown::Functions::EntityFunctions::LoadVox(finalVoxPath, objName, scale);
+	Vox* newVox = Teardown::Functions::EntityFunctions::LoadVox(&ssPath, objName, scale);
 
 	if (newVox)
 		pShape->pVox = newVox;
@@ -79,7 +85,7 @@ int CLuaFunctions::EntityFunctions::LoadVox(lua_State* L)
 	return 0;
 }
 
-int CLuaFunctions::EntityFunctions::InitializeBody(lua_State* L)
+int CLuaFunctions::EntityFunctions::InitializeBody(ScriptCore* pSC, lua_State*& L, retInfo* ret)
 {
 	int argCount = lua_gettop(L);
 
