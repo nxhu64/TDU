@@ -188,7 +188,7 @@
       <Filter>Source Files\Teardown\Functions</Filter>
     </ClCompile>
     <ClCompile Include="GLHooks.cpp">
-      <Filter>Source Files\CLuaFunctions</Filter>
+      <Filter>Source Files\Hooks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
