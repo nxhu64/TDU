@@ -22,6 +22,7 @@ namespace Hooks
 	namespace LuaHooks
 	{
 		void HookLoadBuffer();
+		void HookRegisterGameFunctions();
 	}
 
 	namespace GLHooks
