@@ -5,9 +5,16 @@
 #include "Signatures.h"
 #include "Memory.h"
 #include "Teardown.h"
+#include "TeardownFunctions.h"
 
 #include <detours.h>
 #include <mutex>
+
+void onFirstCWCall()
+{
+	Teardown::Functions::GetAddresses();
+	Hooks::InitHooks();
+}
 
 /*
 	CreateWindow hook
@@ -18,14 +25,13 @@
 	- It was used for was manually handling the game's built in ImGui context, no longer doing that though
 */
 
-std::once_flag hasHookedFunctions;
-
+std::once_flag hasInitialized;
 typedef HWND(*tCreateWindowExA)	(DWORD dwExStyle, LPCSTR lpClassName, LPCSTR lpWindowName, DWORD dwStyle, int X, int Y, int nWidth, int nHeight, HWND hWndParent, HMENU hMenu, HINSTANCE hInstance, LPVOID lpParam);
 tCreateWindowExA oCreateWindowExA;
 
 HWND hCreateWindowExA(DWORD dwExStyle, LPCSTR lpClassName, LPCSTR lpWindowName, DWORD dwStyle, int X, int Y, int nWidth, int nHeight, HWND hWndParent, HMENU hMenu, HINSTANCE hInstance, LPVOID lpParam)
 {
-	std::call_once(hasHookedFunctions, Hooks::InitHooks);
+	std::call_once(hasInitialized, onFirstCWCall);
 
 	if (!lstrcmp(lpWindowName, "Teardown"))
 	{
