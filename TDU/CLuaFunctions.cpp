@@ -4,7 +4,6 @@
 
 void CLuaFunctions::RegisterCFunctions(ScriptCore_LuaState* pSCLS)
 {
-
 	lua_State* L = pSCLS->pLSInfo->pLuaState;
 
 	#ifdef ENABLE_DEBUG_LIB
