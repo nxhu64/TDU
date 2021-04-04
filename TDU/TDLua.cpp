@@ -52,11 +52,10 @@ void Teardown::Lua::RunScript(std::string script)
 	Script* newScript = Teardown::Functions::Constructors::newScript(0);
 
 	lua_State* L = newScript->scriptCore.SC_LuaState.pLSInfo->pLuaState;
-	
 
 	Teardown::Functions::LuaFunctions::RegisterGameFunctions(&newScript->scriptCore);
 	
-	CLuaFunctions::RegisterCFunctions(L);
+	CLuaFunctions::RegisterCFunctions(&newScript->scriptCore.SC_LuaState);
 
 	if (luaL_loadbuffer(L, script.c_str(), script.length(), "TDU Lua script") || lua_pcall(L, 0, LUA_MULTRET, 0))
 	{
