@@ -4,6 +4,7 @@
 #include "Memory.h"
 #include "Globals.h"
 #include "CLuaFunctions.h"
+#include "TeardownFunctions.h"
 
 #include "Lua.hpp"
 
@@ -14,8 +15,8 @@ tluaL_loadbuffer oluaL_loadbuffer;
 
 /*
 	luaL_loadbuffer hook
-	 - Can be used to register your own functions (It's called everytime a script runs, except the ones ran at TDLua.h)
-	 - Can be used to intercept and modify game scripts on runtime, so that there's no need to modify the actual file
+	 - Can be used to intercept and modify game scripts on runtime, so that there's no need to modify the actual file, or prevent them from running altogether
+	 - Can be used to run scripts under another script's lua state (not recommended, may cause heap corruptions)
 */
 
 int hluaL_loadbuffer(lua_State* L, const char* buff, size_t size, const char* name)
@@ -28,8 +29,6 @@ int hluaL_loadbuffer(lua_State* L, const char* buff, size_t size, const char* na
 	if (strcmp(name, "...ata/level/about/script/about.lua") == 0)
 		return 0;
 	*/
-
-	CLuaFunctions::RegisterCFunctions(L);
 	return oluaL_loadbuffer(L, buff, size, name);
 }
 
@@ -43,5 +42,24 @@ void Hooks::LuaHooks::HookLoadBuffer()
 	DetourTransactionBegin();
 	DetourUpdateThread(GetCurrentThread());
 	DetourAttach(&(PVOID&)oluaL_loadbuffer, hluaL_loadbuffer);
+	DetourTransactionCommit();
+}
+
+/*
+	RegisterGameFunctions hook
+	 - Used to register our C Lua functions so that scripts loaded nativelly have our custom functions
+*/
+
+void hRegisterGameFunctions(ScriptCore* pSC)
+{
+	Teardown::Functions::LuaFunctions::RegisterGameFunctions(pSC);
+	CLuaFunctions::RegisterCFunctions(&pSC->SC_LuaState);
+}
+
+void Hooks::LuaHooks::HookRegisterGameFunctions()
+{
+	DetourTransactionBegin();
+	DetourUpdateThread(GetCurrentThread());
+	DetourAttach(&(PVOID&)Teardown::Functions::LuaFunctions::RegisterGameFunctions, hRegisterGameFunctions);
 	DetourTransactionCommit();
 }
