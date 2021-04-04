@@ -29,7 +29,8 @@ namespace Teardown
 	public:
 		small_string() {};
 		small_string(const char* str) {
-			size_t len = strlen(str);
+
+			size_t len = str ? strlen(str) : 0;
 			char* dst = m_StackBuffer[15] ? m_HeapBuffer : &m_StackBuffer[0];
 
 			if (len > 15)
@@ -40,13 +41,9 @@ namespace Teardown
 					return;	
 
 				if (m_StackBuffer[15])
-				{
 					Teardown::Mem::Free(m_HeapBuffer);
-				}
 				else
-				{
 					m_StackBuffer[15] = 1;
-				}
 
 				m_HeapBuffer = dst;
 			}
@@ -55,15 +52,15 @@ namespace Teardown
 			dst[len] = 0;
 		}
 		small_string(const small_string&) = delete;
-		inline void operator=(const small_string& other) {
-			if (m_StackBuffer[15])
-				Teardown::Mem::Free(m_HeapBuffer);
+		//inline void operator=(const small_string& other) {
+		//	if (m_StackBuffer[15])
+		//		Teardown::Mem::Free(m_HeapBuffer);
 
-			if (other.m_StackBuffer[15])
-				this->m_HeapBuffer = other.m_HeapBuffer;
+		//	if (other.m_StackBuffer[15])
+		//		this->m_HeapBuffer = other.m_HeapBuffer;
 
-			memcpy(this->m_StackBuffer, other.m_StackBuffer, sizeof(other.m_StackBuffer));
-		}
+		//	memmove(this->m_StackBuffer, other.m_StackBuffer, sizeof(other.m_StackBuffer));
+		//}
 
 		~small_string() {
 			if (m_StackBuffer[15])
