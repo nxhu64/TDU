@@ -17,7 +17,6 @@
  * This string is only meant to be used to forward and receive data from the game.
  *
  * It does not support:
- *     Copying and assignment
  *     Modifications
  *
  * You are welcome to submit pull requests for these if you wish.
@@ -38,9 +37,7 @@ namespace Teardown
 				dst = (char*)Teardown::Mem::Alloc(sizeof(char) * (len + 1));
 
 				if (dst == nullptr)
-				{
-					return;
-				}
+					return;	
 
 				if (m_StackBuffer[15])
 				{
@@ -57,13 +54,20 @@ namespace Teardown
 			memcpy(dst, str, len);
 			dst[len] = 0;
 		}
-		//small_string(const small_string&) = delete;
-		//void operator=(const small_string&) = delete;
+		small_string(const small_string&) = delete;
+		inline void operator=(const small_string& other) {
+			if (m_StackBuffer[15])
+				Teardown::Mem::Free(m_HeapBuffer);
+
+			if (other.m_StackBuffer[15])
+				this->m_HeapBuffer = other.m_HeapBuffer;
+
+			memcpy(this->m_StackBuffer, other.m_StackBuffer, sizeof(other.m_StackBuffer));
+		}
+
 		~small_string() {
 			if (m_StackBuffer[15])
-			{
 				Teardown::Mem::Free(m_HeapBuffer);
-			}
 		}
 
 		const char* c_str() const { return m_StackBuffer[15] ? m_HeapBuffer : &m_StackBuffer[0]; }
