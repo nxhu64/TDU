@@ -8,7 +8,7 @@
 
 /*
 	W.I.P Path references
-	 - Issues:
+	 - Issues (FIXME):
 			LEVEL causes an access violation
 			MOD points to the level's path, not the mod that contains the script
 */
@@ -16,24 +16,29 @@
 typedef Teardown::small_string* (*tGetFilePath)		(void* pFileManager, Teardown::small_string* unk, Teardown::small_string* path, Teardown::small_string* fileType);
 tGetFilePath tdGetFilePath;
 
-typedef Teardown::small_string* (*tGetFilePathLua)	(lua_State* L, Teardown::small_string* ssPath, const char* ccPath);
+typedef Teardown::small_string* (*tGetFilePathLua)	(lua_State* L, Teardown::small_string* ret, Teardown::small_string* ssPath);
 tGetFilePathLua tdGetFilePathLua;
 
-Teardown::small_string* Teardown::Functions::Utils::GetFilePath(Teardown::small_string ssPath)
+Teardown::small_string* Teardown::Functions::Utils::GetFilePath(const char* ccPath)
 {
-	Teardown::small_string retStr;
+	Teardown::small_string ret(ccPath);
+	Teardown::small_string type;
+	Teardown::small_string ssPath(ccPath);
 
-	tdGetFilePath(Teardown::pGame->pDataManager, &retStr, &ssPath, 0);
-	return &retStr;
+	tdGetFilePath(Teardown::pGame->pDataManager, &ret, &ssPath, &type);
+	return &ret;
 }
 
 
 Teardown::small_string* Teardown::Functions::Utils::GetFilePathLua(lua_State* L, const char* ccPath)
 {
-	Teardown::small_string ret;
-	tdGetFilePathLua(L, &ret, ccPath);
+	Teardown::small_string ret(ccPath);
+	Teardown::small_string ssPath(ccPath);
+	
+	tdGetFilePathLua(L, &ret, &ssPath);
 	return &ret;
 }
+
 
 void Teardown::Functions::Utils::GetAddresses()
 {

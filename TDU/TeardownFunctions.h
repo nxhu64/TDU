@@ -10,7 +10,7 @@ namespace Teardown
 	{
 		namespace Utils
 		{
-			Teardown::small_string* GetFilePath(Teardown::small_string ssPath);
+			Teardown::small_string* GetFilePath(const char* ccPath);
 			Teardown::small_string* GetFilePathLua(lua_State* L, const char* ccPath);
 			void GetAddresses();
 		}
