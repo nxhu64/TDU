@@ -60,3 +60,4 @@ ipch/
 *.VC.db
 *.VC.VC.opendb
 TDU/TDU.vcxproj.user
+enc_temp_folder/
