@@ -5,17 +5,25 @@
 #include "Logger.h"
 #include "Script.h"
 
-typedef void (*tRegisterGameFunctions)		(ScriptCore* pScriptCore);
-tRegisterGameFunctions tdRegisterGameFunctions;
 
-void Teardown::Functions::LuaFunctions::RegisterGameFunctions(ScriptCore* pScriptCore)
+typedef void (*tRegisterLuaFunctionSC)		(ScriptCore_LuaState* SCLS, Teardown::small_string* funcName, void* pFunction);
+tRegisterLuaFunctionSC RegisterLuaFunctionSC;
+
+
+
+void Teardown::Functions::LuaFunctions::RegisterLuaFunction(ScriptCore_LuaState* SCLS, const char* funcName, void* pFunction)
 {
-	tdRegisterGameFunctions(pScriptCore);
+	Teardown::small_string ssFuncName(funcName);
+	RegisterLuaFunctionSC(SCLS, &ssFuncName, pFunction);
 }
 
 void Teardown::Functions::LuaFunctions::GetAddresses()
 {
-	tdRegisterGameFunctions = (tRegisterGameFunctions)Memory::FindPattern(Signatures::LuaFunctions::RegisterGameFunctions.pattern, Signatures::LuaFunctions::RegisterGameFunctions.mask, Globals::HModule);
+	Teardown::Functions::LuaFunctions::RegisterGameFunctions = (tRegisterGameFunctions)Memory::FindPattern(Signatures::LuaFunctions::RegisterGameFunctions.pattern, Signatures::LuaFunctions::RegisterGameFunctions.mask, Globals::HModule);
 	
-	WriteLog(LogType::Address, "RegisterGameFunctions: 0x%p", tdRegisterGameFunctions);
+	DWORD64 dwRegisterLuaFuncSC = Memory::FindPattern(Signatures::LuaFunctions::RegisterLuaFunctionSC.pattern, Signatures::LuaFunctions::RegisterLuaFunctionSC.mask, Globals::HModule);
+	RegisterLuaFunctionSC = (tRegisterLuaFunctionSC)Memory::readPtr(dwRegisterLuaFuncSC, 1);
+
+	WriteLog(LogType::Address, "RegisterGameFunctions: 0x%p", Teardown::Functions::LuaFunctions::RegisterGameFunctions);
+	WriteLog(LogType::Address, "RegisterLuaFunctionSC: 0x%p", RegisterLuaFunctionSC);
 }
