@@ -39,6 +39,9 @@ namespace Signatures
 		// You can find it by searching any functions that are not from the UI lib (i.e. SetTag, or IsBodyBroken)
 		inline Signature RegisterGameFunctions("\x40\x55\x48\x8D\xAC\x24\x00\x00\x00\x00\x48\x81\xEC\x00\x00\x00\x00\x48\xC7\x85\x00\x00\x00\x00\x00\x00\x00\x00", "xxxxxx????xxx????xxx????????");
 
+		// You can find called a whole lot inside RegisterGameFunctions
+		inline Signature RegisterLuaFunctionSC("\xE8\x00\x00\x00\x00\x90\x48\x8D\x4D\x60\xE8\x00\x00\x00\x00\x48\x8B\x9C\x24\x00\x00\x00\x00", "x????xxxxxx????xxxx????"); // direct reference
+
 		inline Signature luaL_loadbuffer("\xE8\x00\x00\x00\x00\x85\xC0\x75\x07\xB8\x00\x00\x00\x00\xEB\x57", "x????xxxxx????xx"); // direct reference
 	}
 
