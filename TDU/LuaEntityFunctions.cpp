@@ -64,8 +64,7 @@ int CLuaFunctions::EntityFunctions::LoadVox(lua_State* L)
 	if (argCount >= 4)
 		objName = luaL_checkstring(L, 4);
 
-	Teardown::small_string* finalVoxPath = Teardown::Functions::Utils::GetFilePathLua(L, voxPath);
-	finalVoxPath = Teardown::Functions::Utils::GetFilePath(*finalVoxPath);
+	Teardown::small_string* finalVoxPath = Teardown::Functions::Utils::GetFilePath(voxPath);
 
 	Vox* newVox = Teardown::Functions::EntityFunctions::LoadVox(finalVoxPath, objName, scale);
 
