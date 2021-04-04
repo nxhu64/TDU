@@ -5,12 +5,14 @@ There's gonna be a lot of spaghetti code in here, as it's my first "big" project
 ###### (basically just random code I've written while reversing Teardown)
 
 ## Features
-* Lua executor, ready to implement custom functions, comes with an example implementation (SetPlayerVelocity).
+* Lua executor, to run scripts while playing
+* Hooks placed so that you can register your own functions
+* Ability to load and spawn voxels through scripts
 * A loadbuffer hook, if you want to replace the game's scripts with your own, without the need of replacing the actual files, or if you want to prevent them from loading altogether.
 * Noclip, for messing around and exploring maps.
 * A couple debug features that were in the original debug menu (render targets, draw bounds, draw bodies).
 * Reversed entity classes, although, i suggest you get those [here](https://github.com/SK83RJOSH/Teardown).
-* A "cheat" menu, for debugging purposes, with features like god, no recoil, and a couple other settings for renderer related stuff
+* A "cheat" menu, for debugging purposes, with features like god, no recoil, etc
 
 ## Installation
 Grab the opengl32 dll from releases, and paste it on your game's root directory (where Teardown.exe is located)
@@ -32,7 +34,7 @@ Grab the opengl32 dll from releases, and paste it on your game's root directory 
 5. Everything should be ready to build.
 
 ## Special thanks to
-* [SK83RJOSH](https://github.com/SK83RJOSH) | Seriously, [this](https://github.com/SK83RJOSH/Teardown) helped me so much, than you
+* [SK83RJOSH](https://github.com/SK83RJOSH) | Seriously, [this](https://github.com/SK83RJOSH/Teardown) helped me so much, thank you
 * [Xorberax](https://github.com/ss-gnalvesteffer)
 * [Nymda](https://github.com/nymda)
 
