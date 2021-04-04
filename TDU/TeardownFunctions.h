@@ -8,10 +8,14 @@ namespace Teardown
 {
 	namespace Functions
 	{
+		namespace {
+			typedef void (*tRegisterGameFunctions)		(ScriptCore* pScriptCore);
+		};
+
 		namespace Utils
 		{
-			Teardown::small_string* GetFilePath(const char* ccPath);
-			Teardown::small_string* GetFilePathLua(lua_State* L, const char* ccPath);
+			const char* GetFilePath(const char* ccPath);
+			const char* GetFilePathLua(ScriptCore* pSC, const char* ccPath);
 			void GetAddresses();
 		}
 
@@ -26,7 +30,8 @@ namespace Teardown
 		namespace LuaFunctions
 		{
 			void GetAddresses();
-			void RegisterGameFunctions(ScriptCore* pScriptCore);
+			void RegisterLuaFunction(ScriptCore_LuaState* pSCLS, const char* funcName, void* pFunction);
+			inline tRegisterGameFunctions RegisterGameFunctions;
 		}
 
 		namespace EntityFunctions
