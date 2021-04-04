@@ -23,7 +23,7 @@ tVoxFunction InitializeVox;
 
 Vox* Teardown::Functions::EntityFunctions::LoadVox(Teardown::small_string* voxPath, const char* object, float Scale)
 {
-	Teardown::small_string objss;
+	Teardown::small_string objss(object);
 
 	Vox* newVox = tdLoadVox(voxPath, &objss, Scale);
 
