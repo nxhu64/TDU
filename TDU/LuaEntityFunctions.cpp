@@ -9,12 +9,7 @@ int CLuaFunctions::EntityFunctions::CreateBody(ScriptCore* pSC, lua_State*& L, r
 
 	DWORD64 parent = 0;
 
-	bool isDynamic = false;
-
 	if (argCount >= 1)
-		isDynamic = lua_toboolean(L, 1);
-
-	if (argCount >= 2)
 	{
 		int parentId = lua_tointeger(L, 2);
 		if (parentId > 0)
@@ -22,7 +17,6 @@ int CLuaFunctions::EntityFunctions::CreateBody(ScriptCore* pSC, lua_State*& L, r
 	}
 
 	Body* newBody = Teardown::Functions::Constructors::newBody((Entity*)parent);
-	newBody->Dynamic = isDynamic;
 
 	lua_pushinteger(ret->pL, newBody->Id);
 	++ret->retcount;
