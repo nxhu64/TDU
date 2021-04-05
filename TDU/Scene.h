@@ -2,7 +2,7 @@
 #include "Types.h"
 #include "Entities.h"
 #include "Script.h"
-#include "Skybox.h"
+#include "Environment.h"
 
 class Scene
 {
@@ -14,7 +14,7 @@ public:
 	char pad_0078[48]; //0x0078
 	class fireSystem* pFireSystem; //0x00A8
 	char pad_00B0[16]; //0x00B0
-	Skybox* pSkybox; //0x00C0
+	Environment* pEnvironment; //0x00C0
 	glm::vec3 spawnPos; //0x00C8
 	char pad_00D4[76]; //0x00D4
 	class Vehicle* pCurrentVehicle; //0x0120
