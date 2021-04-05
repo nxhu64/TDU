@@ -190,6 +190,9 @@
     <ClCompile Include="GLHooks.cpp">
       <Filter>Source Files\Hooks</Filter>
     </ClCompile>
+    <ClCompile Include="EnvFunctions.cpp">
+      <Filter>Source Files\CLuaFunctions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLExterns.h">
@@ -332,6 +335,9 @@
     </ClInclude>
     <ClInclude Include="MemoryFunctions.h">
       <Filter>Source Files\Teardown\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Environment.h">
+      <Filter>Source Files\Teardown</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
