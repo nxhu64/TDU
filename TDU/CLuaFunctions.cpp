@@ -27,18 +27,21 @@ void CLuaFunctions::RegisterCFunctions(ScriptCore_LuaState* pSCLS)
 	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "LoadVox", &CLuaFunctions::EntityFunctions::LoadVox);
 	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "InitializeBody", &CLuaFunctions::EntityFunctions::InitializeBody);
 
-	//lua_pushcfunction(L, CLuaFunctions::EntityFunctions::CreateBody);
-	//lua_setglobal(L, "CreateBody");
 
-	//lua_pushcfunction(L, CLuaFunctions::EntityFunctions::CreateShape);
-	//lua_setglobal(L, "CreateShape");
-
-	//lua_pushcfunction(L, CLuaFunctions::EntityFunctions::LoadVox);
-	//lua_setglobal(L, "LoadVox");
-
-	//lua_pushcfunction(L, CLuaFunctions::EntityFunctions::InitializeBody);
-	//lua_setglobal(L, "InitializeBody");
-
-	//lua_pushcfunction(L, CLuaFunctions::UtilFunctions::Wait);
-	//lua_setglobal(L, "Wait");
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetNightLight", &CLuaFunctions::EnvFunctions::SetNightLight);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetRain", &CLuaFunctions::EnvFunctions::SetRain);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetPuddleSize", &CLuaFunctions::EnvFunctions::SetPuddleSize);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetPuddleAmount", &CLuaFunctions::EnvFunctions::SetPuddleAmount);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetWetness", &CLuaFunctions::EnvFunctions::SetWetness);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetFogParams", &CLuaFunctions::EnvFunctions::SetFogParams);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetFogColor", &CLuaFunctions::EnvFunctions::SetFogColor);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetExposure", &CLuaFunctions::EnvFunctions::SetExposure);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetBrightness", &CLuaFunctions::EnvFunctions::SetBrightness);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetAmbient", &CLuaFunctions::EnvFunctions::SetAmbient);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetSunGlare", &CLuaFunctions::EnvFunctions::SetSunGlare);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetSunFogScale", &CLuaFunctions::EnvFunctions::SetSunFogScale);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetSunLength", &CLuaFunctions::EnvFunctions::SetSunLength);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetSunSpread", &CLuaFunctions::EnvFunctions::SetSunSpread);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetSunBrightness", &CLuaFunctions::EnvFunctions::SetSunBrightness);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetSunColorTint", &CLuaFunctions::EnvFunctions::SetSunColorTint);
 }
