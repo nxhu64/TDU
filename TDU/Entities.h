@@ -1,6 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
 #include <glm/gtc/quaternion.hpp>
+#include "Types.h"
 
 // Entity name	| Hex size	| Size in bytes	| Entity ID
 // Body			|	0xE8	|	232 bytes	|	1
@@ -72,6 +73,18 @@ public:
 	virtual void	Function3();
 }; // Size: 0x28
 
+class Water : public Entity
+{
+public:
+	char pad_0028[28]; //0x0028
+	float depth; //0x0044
+	char pad_0048[792]; //0x0048
+	float wave; //0x0360
+	float ripple; //0x0364
+	float motion; //0x0368
+	float foam; //0x036C
+}; //Size: 0x370
+
 class Vox
 {
 public:
@@ -128,16 +141,50 @@ public:
 	char pad_00E6[2]; //0x00E6
 }; //Size: 0xE8
 
+class Wheel : public Entity
+{
+public:
+	class Vehicle* Vehicle; //0x0028
+	Body* VehicleBody; //0x0030
+	Body* WheelBody; //0x0038
+	Shape* WheelShape; //0x0040
+	char pad_0048[56]; //0x0048
+	float steer; //0x0080
+	float drive; //0x0084
+	glm::vec3 travel; //0x0088
+	char pad_0094[24]; //0x0094
+	float turnSpeed; //0x00AC
+	char pad_00B0[64]; //0x00B0
+}; //Size: 0x00F0
+
 class Vehicle : public Entity
 {
 public:
-	Body* pBody; //0x0028
+	class Body* pBody; //0x0028
 	glm::vec3 camPosition; //0x0030
 	glm::quat rotation; //0x003C
-	char pad_004C[40]; //0x004C
-	int8_t wheelCount; //0x0074
-	char pad_0075[199]; //0x0075
-	glm::vec2 moveInput; //0x013C
+	char pad_004C[28]; //0x004C
+	Teardown::small_vector<Wheel*> WheelList; //0x0068
+	char pad_0078[68]; //0x0078
+	float topspeed; //0x00BC
+	char pad_00C0[4]; //0x00C0
+	float spring; //0x00C4
+	float damping; //0x00C8
+	float acceleration; //0x00CC
+	float strength; //0x00D0
+	float friction; //0x00D4
+	char pad_00D8[4]; //0x00D8
+	bool driven; //0x00DC
+	char pad_00DD[3]; //0x00DD
+	float antispin; //0x00E0
+	float steerassist; //0x00E4
+	char pad_00E8[4]; //0x00E8
+	float antiroll; //0x00EC
+	float difflock; //0x00F0
+	char pad_00F4[4]; //0x00F4
+	char* sound; //0x00F8
+	char pad_0100[60]; //0x0100
+	glm::vec2 moveKeys; //0x013C
 	float handbrake; //0x0144
 	float mouse1Down; //0x0148
 	float mouse2Down; //0x014C
@@ -146,9 +193,9 @@ public:
 	float accelCompletion; //0x015C
 	char pad_0160[4]; //0x0160
 	float accelCompletion2; //0x0164
-	float N000014F4; //0x0168
+	char pad_0168[4]; //0x0168
 	float vehicleCondition; //0x016C
 	char pad_0170[276]; //0x0170
 	bool isBraking; //0x0284
-	char pad_0285[3]; // 0x0285
-}; // Size: 0x288
+	char pad_0285[3]; //0x0285
+}; //Size: 0x0288
