@@ -1,7 +1,5 @@
 #include "CLuaFunctions.h"
 #include "TeardownFunctions.h"
-#include <Windows.h>
-
 
 int CLuaFunctions::EntityFunctions::CreateBody(ScriptCore* pSC, lua_State*& L, retInfo* ret)
 {
