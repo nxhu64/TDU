@@ -2,7 +2,7 @@
 #include "Types.h"
 #include <glm/glm.hpp>
 
-class Skybox
+class Environment
 {
 public:
 	Teardown::small_string path;
