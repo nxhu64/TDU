@@ -29,6 +29,9 @@ void Cheats::Noclip::Toggle()
 		Teardown::pGame->pPlayer->Velocity = exitSpeed;
 	else
 	{
+		Teardown::pGame->pPlayer->Velocity = glm::vec3(0, 0, 0);
+		Teardown::pGame->pPlayer->Velocity2 = glm::vec3(0, 0, 0);
+
 		newPos = Teardown::pGame->pPlayer->cameraPosition2;
 		lastRegisteredTime = Time::timeAsMilliseconds();
 	}
