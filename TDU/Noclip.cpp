@@ -18,6 +18,12 @@ glm::quat newRotation;
 
 int64_t lastRegisteredTime;
 
+/*
+	FIXME
+	 - Something related to noclip breaks collisions after a while, the player suddenly starts getting velocity out of nowhere, specially when colliding on the sides, and clips through things
+	   despite not being on noclip
+*/
+
 void Cheats::Noclip::Toggle()
 {
 	Enabled = !Enabled;

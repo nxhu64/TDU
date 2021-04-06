@@ -2,8 +2,8 @@
 #include "Teardown.h"
 
 /*
-	To-do:
-	 - Create templates for these functions, or something more efficient than this, this is a mess
+	FIXME:
+	 - This looks like a mess, there must be a way more efficient way to do this rather than defining the function every time
 */
 
 int CLuaFunctions::EnvFunctions::SetSunColorTint(ScriptCore* pSC, lua_State*& L, retInfo* ret)
