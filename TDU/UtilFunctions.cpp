@@ -39,14 +39,6 @@ const char* Teardown::Functions::Utils::GetFilePathLua(ScriptCore* pSC, const ch
 	return ret.c_str();
 }
 
-//Teardown::small_string* hGetFilePathLua(lua_State* L, Teardown::small_string* ret, Teardown::small_string* ssPath)
-//{
-//	tdGetFilePathLua(L, ret, ssPath);
-//	return ret;
-//}
-//
-//#include <detours.h>
-
 void Teardown::Functions::Utils::GetAddresses()
 {
 	DWORD64 dwGetFilePath = Memory::FindPattern(Signatures::GetFilePath.pattern, Signatures::GetFilePath.mask, Globals::HModule);
@@ -57,9 +49,4 @@ void Teardown::Functions::Utils::GetAddresses()
 
 	WriteLog(LogType::Address, "GetFilePath: 0x%p", tdGetFilePath);
 	WriteLog(LogType::Address, "GetFilePathLua: 0x%p", tdGetFilePathLua);
-
-	//DetourTransactionBegin();
-	//DetourUpdateThread(GetCurrentThread());
-	//DetourAttach(&(PVOID&)tdGetFilePathLua, hGetFilePathLua);
-	//DetourTransactionCommit();
 }
