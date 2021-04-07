@@ -26,6 +26,7 @@ namespace CLuaFunctions
 
 	namespace EnvFunctions
 	{
+		int SetSunColor(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 		int SetSunColorTint(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 		int SetSunBrightness(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 		int SetSunSpread(ScriptCore* pSC, lua_State*& L, retInfo* ret);
@@ -42,6 +43,8 @@ namespace CLuaFunctions
 		int SetPuddleSize(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 		int SetRain(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 		int SetNightLight(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		int UpdateEnvironment(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		int SetSkybox(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 	}
 
 	void RegisterCFunctions(ScriptCore_LuaState* pSCLS);

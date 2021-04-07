@@ -5,8 +5,10 @@
 class Environment
 {
 public:
-	Teardown::small_string path;
-	char pad_0018[16]; //0x0018
+	const char* skyboxpath;
+	char pad_0008[8]; //0x0008
+	glm::vec3 sunColor; //0x0010
+	char pad_001C[4]; //0x001C
 	float skyboxrot; //0x0020
 	char pad_0024[12]; //0x0024
 	glm::vec3 sunColorTint; //0x0030

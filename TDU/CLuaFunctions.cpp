@@ -44,4 +44,8 @@ void CLuaFunctions::RegisterCFunctions(ScriptCore_LuaState* pSCLS)
 	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetSunSpread", &CLuaFunctions::EnvFunctions::SetSunSpread);
 	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetSunBrightness", &CLuaFunctions::EnvFunctions::SetSunBrightness);
 	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetSunColorTint", &CLuaFunctions::EnvFunctions::SetSunColorTint);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetSunColor", &CLuaFunctions::EnvFunctions::SetSunColor);
+
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "UpdateEnvironment", &CLuaFunctions::EnvFunctions::UpdateEnvironment);
+	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, "SetSkybox", &CLuaFunctions::EnvFunctions::SetSkybox);
 }

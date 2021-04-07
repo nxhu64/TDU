@@ -35,6 +35,8 @@ namespace Signatures
 	inline Signature GetFilePath("\xE8\x00\x00\x00\x00\x90\x48\x8B\x4B\x78", "x????xxxxx"); // direct reference
 	inline Signature GetFilePathLua("\xE8\x00\x00\x00\x00\x90\x44\x88\x7C\x24\x00", "x????xxxxx?"); // direct reference
 
+	inline Signature UpdateEnvironment("\xE8\x00\x00\x00\x00\x48\x8B\x87\x00\x00\x00\x00\x8B\x10", "x????xxx????xx"); // direct reference
+
 	namespace LuaFunctions {
 		// You can find it by searching any functions that are not from the UI lib (i.e. SetTag, or IsBodyBroken)
 		inline Signature RegisterGameFunctions("\x40\x55\x48\x8D\xAC\x24\x00\x00\x00\x00\x48\x81\xEC\x00\x00\x00\x00\x48\xC7\x85\x00\x00\x00\x00\x00\x00\x00\x00", "xxxxxx????xxx????xxx????????");
