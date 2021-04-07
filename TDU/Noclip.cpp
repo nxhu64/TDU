@@ -31,7 +31,6 @@ void Cheats::Noclip::Toggle()
 	Enabled = !Enabled;
 
 	Hooks::PlayerHooks::doUpdateCamera = !Enabled;
-	Hooks::PlayerHooks::doUpdateCollisions = !Enabled;
 
 	if (!Enabled)
 		Teardown::pGame->pPlayer->Velocity = exitSpeed;
