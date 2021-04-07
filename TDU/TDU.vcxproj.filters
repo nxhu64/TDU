@@ -178,7 +178,7 @@
     <ClCompile Include="CLuaFunctions.cpp">
       <Filter>Source Files\CLuaFunctions</Filter>
     </ClCompile>
-    <ClCompile Include="LuaEntityFunctions.cpp">
+    <ClCompile Include="CLuaEntityFunctions.cpp">
       <Filter>Source Files\CLuaFunctions</Filter>
     </ClCompile>
     <ClCompile Include="EntityFunctions.cpp">
@@ -190,7 +190,7 @@
     <ClCompile Include="GLHooks.cpp">
       <Filter>Source Files\Hooks</Filter>
     </ClCompile>
-    <ClCompile Include="EnvFunctions.cpp">
+    <ClCompile Include="CLuaEnvFunctions.cpp">
       <Filter>Source Files\CLuaFunctions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -337,6 +337,9 @@
       <Filter>Source Files\Teardown\Functions</Filter>
     </ClInclude>
     <ClInclude Include="Environment.h">
+      <Filter>Source Files\Teardown</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor.h">
       <Filter>Source Files\Teardown</Filter>
     </ClInclude>
   </ItemGroup>
