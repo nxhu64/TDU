@@ -7,10 +7,11 @@
 #include "MemoryFunctions.h"
 
 #include "Entities.h"
+
 #include "Script.h"
 #include "Types.h"
 
-typedef Entity* (*tEntityCCtor)				(void* memAlloc, Entity* Parent);
+typedef Entity* (*tEntityCCtor)						(void* memAlloc, Entity* Parent);
 
 tEntityCCtor BodyCCtor;
 tEntityCCtor ShapeCCtor;

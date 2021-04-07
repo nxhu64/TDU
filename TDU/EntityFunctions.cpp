@@ -1,23 +1,21 @@
 #include "TeardownFunctions.h"
 
 #include "Teardown.h"
-#include "Entities.h"
-#include "Types.h"
 #include "Memory.h"
 #include "Globals.h"
 #include "Signatures.h"
 #include "Logger.h"
+#include "Editor.h"
 
-typedef Vox* (*tLoadVox)		(Teardown::small_string* path, Teardown::small_string* object, float Scale);
+typedef Vox* (*tLoadVox)						(Teardown::small_string* path, Teardown::small_string* object, float Scale);
 tLoadVox tdLoadVox;
 
-typedef void (*tInitializeBody)	(Body* pBody);
-typedef void (*tSetBodyDynamic)	(Body* pBody, bool Dynamic);
-
+typedef void (*tInitializeBody)					(Body* pBody);
+typedef void (*tSetBodyDynamic)					(Body* pBody, bool Dynamic);
 tInitializeBody tdInitializeBody;
 tSetBodyDynamic tdSetBodyDynamic;
 
-typedef Vox* (*tVoxFunction)	(Vox* pVox);
+typedef Vox* (*tVoxFunction)					(Vox* pVox);
 tVoxFunction GenVoxTexture;
 tVoxFunction InitializeVox;
 
