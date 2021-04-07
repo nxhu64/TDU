@@ -6,18 +6,19 @@
 #include "Globals.h"
 #include "Teardown.h"
 
-/*
-	W.I.P Path references
-	 - Issues (FIXME):
-			LEVEL causes an access violation
-			MOD points to the level's path, not the mod that contains the script
-*/
+typedef Teardown::small_string* (*tGetFilePath)			(void* pFileManager, Teardown::small_string* ret, Teardown::small_string* path, Teardown::small_string* fileType);
+tGetFilePath		tdGetFilePath;
 
-typedef Teardown::small_string* (*tGetFilePath)		(void* pFileManager, Teardown::small_string* unk, Teardown::small_string* path, Teardown::small_string* fileType);
-tGetFilePath tdGetFilePath;
+typedef Teardown::small_string* (*tGetFilePathLua)		(ScriptCore* pSC, Teardown::small_string* ret, Teardown::small_string* ssPath);
+tGetFilePathLua		tdGetFilePathLua;
 
-typedef Teardown::small_string* (*tGetFilePathLua)	(ScriptCore* pSC, Teardown::small_string* ret, Teardown::small_string* ssPath);
-tGetFilePathLua tdGetFilePathLua;
+typedef void (*tUpdateEnvironment)						(void* pEnvironment);
+tUpdateEnvironment	tdUpdateEnvironment;
+
+void Teardown::Functions::Utils::UpdateEnvironment()
+{
+	tdUpdateEnvironment(Teardown::pGame->pScene->pEnvironment);
+}
 
 const char* Teardown::Functions::Utils::GetFilePath(const char* ccPath)
 {
@@ -39,6 +40,7 @@ const char* Teardown::Functions::Utils::GetFilePathLua(ScriptCore* pSC, const ch
 	return ret.c_str();
 }
 
+
 void Teardown::Functions::Utils::GetAddresses()
 {
 	DWORD64 dwGetFilePath = Memory::FindPattern(Signatures::GetFilePath.pattern, Signatures::GetFilePath.mask, Globals::HModule);
@@ -47,6 +49,10 @@ void Teardown::Functions::Utils::GetAddresses()
 	DWORD64 dwGetFilePathLua = Memory::FindPattern(Signatures::GetFilePathLua.pattern, Signatures::GetFilePathLua.mask, Globals::HModule);
 	tdGetFilePathLua = (tGetFilePathLua)Memory::readPtr(dwGetFilePathLua, 1);
 
+	DWORD64 dwUpdateEnvironment = Memory::FindPattern(Signatures::UpdateEnvironment.pattern, Signatures::UpdateEnvironment.mask, Globals::HModule);
+	tdUpdateEnvironment = (tUpdateEnvironment)Memory::readPtr(dwUpdateEnvironment, 1);
+
 	WriteLog(LogType::Address, "GetFilePath: 0x%p", tdGetFilePath);
 	WriteLog(LogType::Address, "GetFilePathLua: 0x%p", tdGetFilePathLua);
+	WriteLog(LogType::Address, "UpdateEnvironment: 0x%p", tdUpdateEnvironment);
 }
