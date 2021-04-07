@@ -17,7 +17,7 @@ public:
 	Environment* pEnvironment; //0x00C0
 	glm::vec3 spawnPos; //0x00C8
 	char pad_00D4[20]; //0x00D4
-	class Light* pFlashlight; //0x00E8
+	Light* pFlashlight; //0x00E8
 	char pad_00F0[48]; //0x00F0
 	class Vehicle* pCurrentVehicle; //0x0120
 	class Screen* pCurrentScreen; //0x0128
