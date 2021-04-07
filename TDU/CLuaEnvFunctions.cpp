@@ -1,10 +1,25 @@
 #include "CLuaFunctions.h"
 #include "Teardown.h"
+#include "TeardownFunctions.h"
 
 /*
 	FIXME:
 	 - This looks like a mess, there must be a way more efficient way to do this rather than defining the function every time
 */
+
+int CLuaFunctions::EnvFunctions::SetSkybox(ScriptCore* pSC, lua_State*& L, retInfo* ret)
+{
+	const char* path = luaL_checkstring(L, 1);
+	Teardown::pGame->pScene->pEnvironment->skyboxpath = path;
+	return 0;
+}
+
+int CLuaFunctions::EnvFunctions::UpdateEnvironment(ScriptCore* pSC, lua_State*& L, retInfo* ret)
+{
+	Teardown::Functions::Utils::UpdateEnvironment();
+	return 0;
+}
+
 
 int CLuaFunctions::EnvFunctions::SetSunColorTint(ScriptCore* pSC, lua_State*& L, retInfo* ret)
 {
@@ -12,6 +27,15 @@ int CLuaFunctions::EnvFunctions::SetSunColorTint(ScriptCore* pSC, lua_State*& L,
 	float g = luaL_checknumber(L, 2);
 	float b = luaL_checknumber(L, 3);
 	Teardown::pGame->pScene->pEnvironment->sunColorTint = glm::vec3(r, g, b);
+	return 0;
+}
+
+int CLuaFunctions::EnvFunctions::SetSunColor(ScriptCore* pSC, lua_State*& L, retInfo* ret)
+{
+	float r = luaL_checknumber(L, 1);
+	float g = luaL_checknumber(L, 2);
+	float b = luaL_checknumber(L, 3);
+	Teardown::pGame->pScene->pEnvironment->sunColor = glm::vec3(r, g, b);
 	return 0;
 }
 
