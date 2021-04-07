@@ -42,5 +42,17 @@ namespace CLuaFunctions
 		int SetSkybox(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 	}
 
+	namespace PlayerFunctions
+	{
+		int SetRecoilSlow(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		int SetRecoilFast(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+
+		int SetFlashlightColor(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		int SetFlashlightIntensity(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		int SetFlashlightReach(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		int SetFlashlightFogScale(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		int SetFlashlightFogIter(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+	}
+
 	void RegisterCFunctions(ScriptCore_LuaState* pSCLS);
 }
