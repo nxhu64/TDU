@@ -8,7 +8,6 @@ void Hooks::InitHooks()
 	Hooks::GLHooks::HookSwapBuffers();
 
 	Hooks::PlayerHooks::HookUpdateCamera();
-	Hooks::PlayerHooks::HookUpdateCollisions();
 
 	Hooks::LuaHooks::HookLoadBuffer();
 	Hooks::LuaHooks::HookRegisterGameFunctions();

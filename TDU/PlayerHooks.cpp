@@ -34,28 +34,3 @@ void Hooks::PlayerHooks::HookUpdateCamera()
 	DetourAttach(&(PVOID&)UpdateCamera, hUpdateCamera);
 	DetourTransactionCommit();
 }
-
-/*
-	CollisionHandler hook
-	- Used for noclip, so that player doesn't take fall damage
-*/
-typedef void (*tUpdateCollisions)			(Player* Ply, void* unk1);
-tUpdateCollisions UpdateCollisions;
-
-void hUpdateCollisions(Player* Ply, void* unk1)
-{
-	if (Hooks::PlayerHooks::doUpdateCollisions)
-		UpdateCollisions(Ply, unk1);
-}
-
-void Hooks::PlayerHooks::HookUpdateCollisions()
-{
-	DWORD64 dwUpdateCollisions = Memory::FindPattern(Signatures::PlayerFunctions::UpdatePlayerCollisions.pattern, Signatures::PlayerFunctions::UpdatePlayerCollisions.mask, Globals::HModule);
-	UpdateCollisions = (tUpdateCollisions)Memory::readPtr(dwUpdateCollisions, 1);
-	WriteLog(LogType::Address, "UpdateCollisions: 0x%p | hook: 0x%p", UpdateCollisions, hUpdateCollisions);
-
-	DetourTransactionBegin();
-	DetourUpdateThread(GetCurrentThread());
-	DetourAttach(&(PVOID&)UpdateCollisions, hUpdateCollisions);
-	DetourTransactionCommit();
-}

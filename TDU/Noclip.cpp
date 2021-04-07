@@ -18,6 +18,8 @@ glm::quat newRotation;
 
 int64_t lastRegisteredTime;
 
+float lastHealth = 0.f;
+
 /*
 	FIXME
 	 - Something related to noclip breaks collisions after a while, the player suddenly starts getting velocity out of nowhere, specially when colliding on the sides, and clips through things
@@ -35,8 +37,7 @@ void Cheats::Noclip::Toggle()
 		Teardown::pGame->pPlayer->Velocity = exitSpeed;
 	else
 	{
-		Teardown::pGame->pPlayer->Velocity = glm::vec3(0, 0, 0);
-		Teardown::pGame->pPlayer->Velocity2 = glm::vec3(0, 0, 0);
+		lastHealth = Teardown::pGame->pPlayer->Health;
 
 		newPos = Teardown::pGame->pPlayer->cameraPosition2;
 		lastRegisteredTime = Time::timeAsMilliseconds();
@@ -118,4 +119,6 @@ void Cheats::Noclip::Run()
 	Teardown::pGame->pPlayer->Position = newPos - heightOffset;
 
 	lastRegisteredTime = Time::timeAsMilliseconds();
+
+	Teardown::pGame->pPlayer->Health = lastHealth;
 }

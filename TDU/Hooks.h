@@ -34,9 +34,7 @@ namespace Hooks
 	namespace PlayerHooks
 	{
 		inline bool doUpdateCamera = true;
-		inline bool doUpdateCollisions = true;
 		void HookUpdateCamera();
-		void HookUpdateCollisions();
 	}
 
 	void InitHooks();
