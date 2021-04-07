@@ -3,6 +3,7 @@
 #include "Entities.h"
 #include "Types.h"
 #include "Lua.hpp"
+#include "Editor.h"
 
 namespace Teardown
 {
@@ -16,6 +17,7 @@ namespace Teardown
 		{
 			const char* GetFilePath(const char* ccPath);
 			const char* GetFilePathLua(ScriptCore* pSC, const char* ccPath);
+			void UpdateEnvironment();
 			void GetAddresses();
 		}
 
