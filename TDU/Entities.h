@@ -131,7 +131,9 @@ public:
 	float fogScale; //0x0078
 	char pad_007C[8]; //0x007C
 	float Glare; //0x0084
-	char pad_0088[4824]; //0x0088
+	char pad_0088[20]; //0x0088
+	float Intensity; //0x009C
+	char pad_00A0[4800]; //0x00A0
 }; //Size: 0x1360
 
 class Shape : public Entity
@@ -196,8 +198,8 @@ class Vehicle : public Entity
 {
 public:
 	class Body* pBody; //0x0028
-	glm::vec3 camPosition; //0x0030
-	glm::quat rotation; //0x003C
+	glm::vec3 Position; //0x0030
+	glm::quat Rotation; //0x003C
 	char pad_004C[28]; //0x004C
 	Teardown::small_vector<Wheel*> WheelList; //0x0068
 	char pad_0078[68]; //0x0078
