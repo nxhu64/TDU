@@ -2,17 +2,12 @@
 #include "Lua.hpp"
 #include "Script.h"
 
-/*
-	This file should eventually have a different name, or LuaFunctions.h/cpp should have a different name, cause it's gonna cause some confusion
-*/
-
 class retInfo
 {
 public:
 	lua_State* pL;
 	int retcount;
-	// Unk size
-};
+}; // Size: ?
 
 namespace CLuaFunctions
 {
