@@ -97,8 +97,8 @@ public:
 	char pad_0485[7]; //0x0485
 	float timeSinceLastJump; //0x048C
 	char pad_0490[4]; //0x0490
-	float recoilSlow; //0x0494
-	float recoilFast; //0x0498
+	float recoilFast; //0x0494
+	float recoilSlow; //0x0498
 	char pad_049C[12]; //0x049C
 	class Shape* pTargetShape; //0x04A8
 	float raycastDist; //0x04B0
