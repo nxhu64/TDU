@@ -13,10 +13,12 @@ public:
 	void* pParticleSystem; //0x0070
 	char pad_0078[48]; //0x0078
 	class fireSystem* pFireSystem; //0x00A8
-	char pad_00B0[16]; //0x00B0
+	Teardown::small_vector<Projectile*> projectileList;
 	Environment* pEnvironment; //0x00C0
 	glm::vec3 spawnPos; //0x00C8
-	char pad_00D4[76]; //0x00D4
+	char pad_00D4[20]; //0x00D4
+	class Light* pFlashlight; //0x00E8
+	char pad_00F0[48]; //0x00F0
 	class Vehicle* pCurrentVehicle; //0x0120
 	class Screen* pCurrentScreen; //0x0128
 	char pad_0130[248]; //0x0130

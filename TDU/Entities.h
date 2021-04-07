@@ -55,6 +55,31 @@ static const char* entityTypeStr[] = {
 	"Script"
 };
 
+class Vox
+{
+public:
+	int32_t sizeX; //0x0000
+	int32_t sizeY; //0x0004
+	int32_t sizeZ; //0x0008
+	char pad_000C[4]; //0x000C
+	void* MaterialBuffer; //0x0010
+	void* PhysicsBuffer; //0x0018
+	float Scale; //0x0020
+	char pad_0024[56]; //0x0024
+	int32_t VoxelCount; //0x005C
+}; //Size: 0x0060
+
+class Projectile
+{
+public:
+	glm::vec3 Position; //0x0000
+	glm::vec3 Velocity; //0x000C
+	float Lifetime; //0x0018 100+ and the projectile gets deleted
+	float maxLifetime; //0x001C
+	int8_t projectileType; //0x0020 0 - Gun | 1 - Shotgun | 2 - Rocket
+	char pad_0021[3]; //0x0021
+}; //Size: 0x0024
+
 class Entity
 {
 public:
@@ -85,19 +110,29 @@ public:
 	float foam; //0x036C
 }; //Size: 0x370
 
-class Vox
+class Light : public Entity
 {
 public:
-	int32_t sizeX; //0x0000
-	int32_t sizeY; //0x0004
-	int32_t sizeZ; //0x0008
-	char pad_000C[4]; //0x000C
-	void* MaterialBuffer; //0x0010
-	void* PhysicsBuffer; //0x0018
-	float Scale; //0x0020
-	char pad_0024[56]; //0x0024
-	int32_t VoxelCount; //0x005C
-}; //Size: 0x0060
+	bool Active; //0x0028
+	char pad_0029[3]; //0x0029
+	int8_t Type; //0x002C 1 - Sphere | 2 - Cone | 3 - Area
+	char pad_002D[3]; //0x002D
+	glm::vec3 Position; //0x0030
+	glm::quat Rotation; //0x003C
+	glm::vec3 Color; //0x004C
+	char pad_0058[8]; //0x0058
+	float Reach; //0x0060
+	float Size; //0x0064
+	bool Unshadowed; //0x0068
+	char pad_0069[3]; //0x0069
+	float Angle; //0x006C
+	float Penumbra; //0x0070
+	float fogIter; //0x0074
+	float fogScale; //0x0078
+	char pad_007C[8]; //0x007C
+	float Glare; //0x0084
+	char pad_0088[4824]; //0x0088
+}; //Size: 0x1360
 
 class Shape : public Entity
 {
