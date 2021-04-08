@@ -26,6 +26,7 @@ namespace Teardown
 			void GetAddresses();
 			Script* newScript(Entity* Parent);
 			Body* newBody(Entity* Parent);
+			Light* newLight(Entity* Parent);
 			Shape* newShape(Entity* Parent);
 		}
 
