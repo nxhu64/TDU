@@ -5,53 +5,58 @@
 class retInfo
 {
 public:
-	lua_State* pL;
-	int retcount;
-}; // Size: ?
+	lua_State* L;
+	int retCount;
+	int maxRet;
+};
 
 namespace CLuaFunctions
 {
 	namespace EntityFunctions
 	{
-		int CreateBody(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int CreateShape(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int LoadVox(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int InitializeBody(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void CreateBody(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void CreateShape(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+
+		void LoadVox(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+
+		void InitializeBody(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+
+		void SetLightPos(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 	}
 
 	namespace EnvFunctions
 	{
-		int SetSunColor(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetSunColorTint(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetSunBrightness(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetSunSpread(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetSunLength(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetSunFogScale(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetSunGlare(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetAmbient(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetBrightness(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetExposure(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetFogColor(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetFogParams(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetWetness(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetPuddleAmount(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetPuddleSize(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetRain(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetNightLight(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int UpdateEnvironment(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetSkybox(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetSunColor(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetSunColorTint(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetSunBrightness(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetSunSpread(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetSunLength(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetSunFogScale(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetSunGlare(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetAmbient(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetBrightness(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetExposure(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetFogColor(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetFogParams(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetWetness(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetPuddleAmount(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetPuddleSize(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetRain(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetNightLight(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void UpdateEnvironment(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetSkybox(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 	}
 
 	namespace PlayerFunctions
 	{
-		int SetRecoilSlow(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetRecoilFast(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetRecoilSlow(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetRecoilFast(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 
-		int SetFlashlightColor(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetFlashlightIntensity(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetFlashlightReach(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetFlashlightFogScale(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		int SetFlashlightFogIter(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetFlashlightColor(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetFlashlightIntensity(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetFlashlightReach(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetFlashlightFogScale(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		void SetFlashlightFogIter(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 	}
 
 	void RegisterCFunctions(ScriptCore_LuaState* pSCLS);
