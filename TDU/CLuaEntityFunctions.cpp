@@ -1,7 +1,7 @@
 #include "CLuaFunctions.h"
 #include "TeardownFunctions.h"
 
-int CLuaFunctions::EntityFunctions::CreateBody(ScriptCore* pSC, lua_State*& L, retInfo* ret)
+void CLuaFunctions::EntityFunctions::CreateBody(ScriptCore* pSC, lua_State*& L, retInfo* ret)
 {
 	int argCount = lua_gettop(L);
 
@@ -16,12 +16,11 @@ int CLuaFunctions::EntityFunctions::CreateBody(ScriptCore* pSC, lua_State*& L, r
 
 	Body* newBody = Teardown::Functions::Constructors::newBody((Entity*)parent);
 
-	lua_pushinteger(ret->pL, newBody->Id);
-	++ret->retcount;
-	return 1;
+	lua_pushinteger(L, newBody->Id);
+	ret->retCount = 1;
 }
 
-int CLuaFunctions::EntityFunctions::CreateShape(ScriptCore* pSC, lua_State*& L, retInfo* ret)
+void CLuaFunctions::EntityFunctions::CreateShape(ScriptCore* pSC, lua_State*& L, retInfo* ret)
 {
 	int argCount = lua_gettop(L);
 	Entity* parent = 0;
@@ -33,12 +32,11 @@ int CLuaFunctions::EntityFunctions::CreateShape(ScriptCore* pSC, lua_State*& L, 
 
 	Shape* newShape = Teardown::Functions::Constructors::newShape(parent);
 
-	lua_pushinteger(ret->pL, newShape->Id);
-	++ret->retcount;
-	return 1;
+	lua_pushinteger(L, newShape->Id);
+	ret->retCount = 1;
 }
 
-int CLuaFunctions::EntityFunctions::LoadVox(ScriptCore* pSC, lua_State*& L, retInfo* ret)
+void CLuaFunctions::EntityFunctions::LoadVox(ScriptCore* pSC, lua_State*& L, retInfo* ret)
 {
 	int argCount = lua_gettop(L);
 
@@ -50,7 +48,7 @@ int CLuaFunctions::EntityFunctions::LoadVox(ScriptCore* pSC, lua_State*& L, retI
 	Shape* pShape = (Shape*)Teardown::Functions::EntityFunctions::GetEntityById(shapeId);
 
 	if (!pShape || pShape->Type != entityType::Shape)
-		return 0;
+		return;
 
 	float scale = 1.f;
 
@@ -73,11 +71,9 @@ int CLuaFunctions::EntityFunctions::LoadVox(ScriptCore* pSC, lua_State*& L, retI
 		lua_pushliteral(L, "Unable to load vox file");
 		lua_error(L);
 	}
-
-	return 0;
 }
 
-int CLuaFunctions::EntityFunctions::InitializeBody(ScriptCore* pSC, lua_State*& L, retInfo* ret)
+void CLuaFunctions::EntityFunctions::InitializeBody(ScriptCore* pSC, lua_State*& L, retInfo* ret)
 {
 	int argCount = lua_gettop(L);
 
@@ -86,7 +82,7 @@ int CLuaFunctions::EntityFunctions::InitializeBody(ScriptCore* pSC, lua_State*& 
 	Body* pBody= (Body*)Teardown::Functions::EntityFunctions::GetEntityById(shapeId);
 
 	if (!pBody || pBody->Type != entityType::Body)
-		return 0;
+		return;
 
 	bool Dynamic = false;
 	if (argCount >= 2)
@@ -94,6 +90,4 @@ int CLuaFunctions::EntityFunctions::InitializeBody(ScriptCore* pSC, lua_State*& 
 
 	Teardown::Functions::EntityFunctions::SetBodyDynamic(pBody, Dynamic);
 	Teardown::Functions::EntityFunctions::InitializeBody(pBody);
-	
-	return 0;
-}
+	}
