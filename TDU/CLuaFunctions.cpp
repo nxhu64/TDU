@@ -2,10 +2,7 @@
 #include "Config.h"
 #include "TeardownFunctions.h"
 
-void reg(ScriptCore_LuaState* pSCLS, const char* name, void* pFunction)
-{
-	Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, name, pFunction);
-}
+#define reg(pSCLS, funcName, funcPointer) Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, funcName, funcPointer)
 
 void CLuaFunctions::RegisterCFunctions(ScriptCore_LuaState* pSCLS)
 {
