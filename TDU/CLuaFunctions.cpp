@@ -2,7 +2,7 @@
 #include "Config.h"
 #include "TeardownFunctions.h"
 
-#define reg(pSCLS, funcName, funcPointer) Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, funcName, funcPointer)
+#define regLuaFunc(pSCLS, funcName, funcPointer) Teardown::Functions::LuaFunctions::RegisterLuaFunction(pSCLS, funcName, funcPointer)
 
 void CLuaFunctions::RegisterCFunctions(ScriptCore_LuaState* pSCLS)
 {
@@ -24,38 +24,37 @@ void CLuaFunctions::RegisterCFunctions(ScriptCore_LuaState* pSCLS)
 		Register your functions here
 	*/
 
-	reg(pSCLS, "CreateBody", &CLuaFunctions::EntityFunctions::CreateBody);
-	reg(pSCLS, "CreateShape", &CLuaFunctions::EntityFunctions::CreateShape);
-	reg(pSCLS, "LoadVox", &CLuaFunctions::EntityFunctions::LoadVox);
-	reg(pSCLS, "InitializeBody", &CLuaFunctions::EntityFunctions::InitializeBody);
+	regLuaFunc(pSCLS, "CreateBody", &CLuaFunctions::EntityFunctions::CreateBody);
+	regLuaFunc(pSCLS, "CreateShape", &CLuaFunctions::EntityFunctions::CreateShape);
+	regLuaFunc(pSCLS, "LoadVox", &CLuaFunctions::EntityFunctions::LoadVox);
+	regLuaFunc(pSCLS, "InitializeBody", &CLuaFunctions::EntityFunctions::InitializeBody);
 
+	regLuaFunc(pSCLS, "SetNightLight", &CLuaFunctions::EnvFunctions::SetNightLight);
+	regLuaFunc(pSCLS, "SetRain", &CLuaFunctions::EnvFunctions::SetRain);
+	regLuaFunc(pSCLS, "SetPuddleSize", &CLuaFunctions::EnvFunctions::SetPuddleSize);
+	regLuaFunc(pSCLS, "SetPuddleAmount", &CLuaFunctions::EnvFunctions::SetPuddleAmount);
+	regLuaFunc(pSCLS, "SetWetness", &CLuaFunctions::EnvFunctions::SetWetness);
+	regLuaFunc(pSCLS, "SetFogParams", &CLuaFunctions::EnvFunctions::SetFogParams);
+	regLuaFunc(pSCLS, "SetFogColor", &CLuaFunctions::EnvFunctions::SetFogColor);
+	regLuaFunc(pSCLS, "SetExposure", &CLuaFunctions::EnvFunctions::SetExposure);
+	regLuaFunc(pSCLS, "SetBrightness", &CLuaFunctions::EnvFunctions::SetBrightness);
+	regLuaFunc(pSCLS, "SetAmbient", &CLuaFunctions::EnvFunctions::SetAmbient);
+	regLuaFunc(pSCLS, "SetSunGlare", &CLuaFunctions::EnvFunctions::SetSunGlare);
+	regLuaFunc(pSCLS, "SetSunFogScale", &CLuaFunctions::EnvFunctions::SetSunFogScale);
+	regLuaFunc(pSCLS, "SetSunLength", &CLuaFunctions::EnvFunctions::SetSunLength);
+	regLuaFunc(pSCLS, "SetSunSpread", &CLuaFunctions::EnvFunctions::SetSunSpread);
+	regLuaFunc(pSCLS, "SetSunBrightness", &CLuaFunctions::EnvFunctions::SetSunBrightness);
+	regLuaFunc(pSCLS, "SetSunColorTint", &CLuaFunctions::EnvFunctions::SetSunColorTint);
+	regLuaFunc(pSCLS, "SetSunColor", &CLuaFunctions::EnvFunctions::SetSunColor);
+	regLuaFunc(pSCLS, "UpdateEnvironment", &CLuaFunctions::EnvFunctions::UpdateEnvironment);
+	regLuaFunc(pSCLS, "SetSkybox", &CLuaFunctions::EnvFunctions::SetSkybox);
 
-	reg(pSCLS, "SetNightLight", &CLuaFunctions::EnvFunctions::SetNightLight);
-	reg(pSCLS, "SetRain", &CLuaFunctions::EnvFunctions::SetRain);
-	reg(pSCLS, "SetPuddleSize", &CLuaFunctions::EnvFunctions::SetPuddleSize);
-	reg(pSCLS, "SetPuddleAmount", &CLuaFunctions::EnvFunctions::SetPuddleAmount);
-	reg(pSCLS, "SetWetness", &CLuaFunctions::EnvFunctions::SetWetness);
-	reg(pSCLS, "SetFogParams", &CLuaFunctions::EnvFunctions::SetFogParams);
-	reg(pSCLS, "SetFogColor", &CLuaFunctions::EnvFunctions::SetFogColor);
-	reg(pSCLS, "SetExposure", &CLuaFunctions::EnvFunctions::SetExposure);
-	reg(pSCLS, "SetBrightness", &CLuaFunctions::EnvFunctions::SetBrightness);
-	reg(pSCLS, "SetAmbient", &CLuaFunctions::EnvFunctions::SetAmbient);
-	reg(pSCLS, "SetSunGlare", &CLuaFunctions::EnvFunctions::SetSunGlare);
-	reg(pSCLS, "SetSunFogScale", &CLuaFunctions::EnvFunctions::SetSunFogScale);
-	reg(pSCLS, "SetSunLength", &CLuaFunctions::EnvFunctions::SetSunLength);
-	reg(pSCLS, "SetSunSpread", &CLuaFunctions::EnvFunctions::SetSunSpread);
-	reg(pSCLS, "SetSunBrightness", &CLuaFunctions::EnvFunctions::SetSunBrightness);
-	reg(pSCLS, "SetSunColorTint", &CLuaFunctions::EnvFunctions::SetSunColorTint);
-	reg(pSCLS, "SetSunColor", &CLuaFunctions::EnvFunctions::SetSunColor);
-	reg(pSCLS, "UpdateEnvironment", &CLuaFunctions::EnvFunctions::UpdateEnvironment);
-	reg(pSCLS, "SetSkybox", &CLuaFunctions::EnvFunctions::SetSkybox);
+	regLuaFunc(pSCLS, "SetRecoilSlow", &CLuaFunctions::PlayerFunctions::SetRecoilSlow);
+	regLuaFunc(pSCLS, "SetRecoilFast", &CLuaFunctions::PlayerFunctions::SetRecoilFast);
 
-	reg(pSCLS, "SetRecoilSlow", &CLuaFunctions::PlayerFunctions::SetRecoilSlow);
-	reg(pSCLS, "SetRecoilFast", &CLuaFunctions::PlayerFunctions::SetRecoilFast);
-
-	reg(pSCLS, "SetFlashlightColor", &CLuaFunctions::PlayerFunctions::SetFlashlightColor);
-	reg(pSCLS, "SetFlashlightIntensity", &CLuaFunctions::PlayerFunctions::SetFlashlightIntensity);
-	reg(pSCLS, "SetFlashlightReach", &CLuaFunctions::PlayerFunctions::SetFlashlightReach);
-	reg(pSCLS, "SetFlashlightFogScale", &CLuaFunctions::PlayerFunctions::SetFlashlightFogScale);
-	reg(pSCLS, "SetFlashlightFogIter", &CLuaFunctions::PlayerFunctions::SetFlashlightFogIter);
+	regLuaFunc(pSCLS, "SetFlashlightColor", &CLuaFunctions::PlayerFunctions::SetFlashlightColor);
+	regLuaFunc(pSCLS, "SetFlashlightIntensity", &CLuaFunctions::PlayerFunctions::SetFlashlightIntensity);
+	regLuaFunc(pSCLS, "SetFlashlightReach", &CLuaFunctions::PlayerFunctions::SetFlashlightReach);
+	regLuaFunc(pSCLS, "SetFlashlightFogScale", &CLuaFunctions::PlayerFunctions::SetFlashlightFogScale);
+	regLuaFunc(pSCLS, "SetFlashlightFogIter", &CLuaFunctions::PlayerFunctions::SetFlashlightFogIter);
 }
