@@ -115,7 +115,7 @@ class Light : public Entity
 public:
 	bool Active; //0x0028
 	char pad_0029[3]; //0x0029
-	int8_t Type; //0x002C 1 - Sphere | 2 - Cone | 3 - Area
+	int8_t SourceType; //0x002C 1 - Sphere | 2 - Cone | 3 - Area
 	char pad_002D[3]; //0x002D
 	glm::vec3 Position; //0x0030
 	glm::quat Rotation; //0x003C
@@ -123,8 +123,7 @@ public:
 	char pad_0058[8]; //0x0058
 	float Reach; //0x0060
 	float Size; //0x0064
-	bool Unshadowed; //0x0068
-	char pad_0069[3]; //0x0069
+	float Unshadowed; //0x0068
 	float Angle; //0x006C
 	float Penumbra; //0x0070
 	float fogIter; //0x0074
