@@ -16,6 +16,8 @@ void CLuaFunctions::EntityFunctions::CreateBody(ScriptCore* pSC, lua_State*& L, 
 
 	Body* newBody = Teardown::Functions::Constructors::newBody((Entity*)parent);
 
+	lua_pop(L, argCount);
+
 	lua_pushinteger(L, newBody->Id);
 	ret->retCount = 1;
 }
@@ -31,6 +33,8 @@ void CLuaFunctions::EntityFunctions::CreateShape(ScriptCore* pSC, lua_State*& L,
 	}
 
 	Shape* newShape = Teardown::Functions::Constructors::newShape(parent);
+
+	lua_pop(L, argCount);
 
 	lua_pushinteger(L, newShape->Id);
 	ret->retCount = 1;
@@ -48,7 +52,11 @@ void CLuaFunctions::EntityFunctions::LoadVox(ScriptCore* pSC, lua_State*& L, ret
 	Shape* pShape = (Shape*)Teardown::Functions::EntityFunctions::GetEntityById(shapeId);
 
 	if (!pShape || pShape->Type != entityType::Shape)
+	{
+		lua_pushliteral(L, "invalid handle");
+		lua_error(L);
 		return;
+	}
 
 	float scale = 1.f;
 
@@ -68,9 +76,12 @@ void CLuaFunctions::EntityFunctions::LoadVox(ScriptCore* pSC, lua_State*& L, ret
 		pShape->pVox = newVox;
 	else
 	{
-		lua_pushliteral(L, "Unable to load vox file");
+		lua_pushliteral(L, "unable to load vox file");
 		lua_error(L);
+		return;
 	}
+
+	lua_pop(L, argCount);
 }
 
 void CLuaFunctions::EntityFunctions::InitializeBody(ScriptCore* pSC, lua_State*& L, retInfo* ret)
@@ -90,4 +101,6 @@ void CLuaFunctions::EntityFunctions::InitializeBody(ScriptCore* pSC, lua_State*&
 
 	Teardown::Functions::EntityFunctions::SetBodyDynamic(pBody, Dynamic);
 	Teardown::Functions::EntityFunctions::InitializeBody(pBody);
-	}
+
+	lua_pop(L, argCount);
+}
