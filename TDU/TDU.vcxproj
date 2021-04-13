@@ -174,8 +174,9 @@
     <ClCompile Include="..\ImGuiColorTextEdit\TextEditor.cpp" />
     <ClCompile Include="BaseHooks.cpp" />
     <ClCompile Include="CLuaFunctions.cpp" />
+    <ClCompile Include="CLuaPlayerFunctions.cpp" />
     <ClCompile Include="ConstructorFunctions.cpp" />
-    <ClCompile Include="LuaEntityFunctions.cpp" />
+    <ClCompile Include="CLuaEntityFunctions.cpp" />
     <ClCompile Include="GLHooks.cpp" />
     <ClCompile Include="ImGuiBuild.cpp" />
     <ClCompile Include="dllmain.cpp" />
@@ -214,8 +215,9 @@
     <ClCompile Include="lua\lzio.c" />
     <ClCompile Include="lua\print.c" />
     <ClCompile Include="Hooks.cpp" />
-    <ClCompile Include="MemoryFunctions.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="CLuaEnvFunctions.cpp" />
+    <ClCompile Include="UtilFunctions.cpp" />
     <ClCompile Include="MiscHooks.cpp" />
     <ClCompile Include="Noclip.cpp" />
     <ClCompile Include="PlayerHooks.cpp" />
@@ -226,11 +228,13 @@
   <ItemGroup>
     <ClInclude Include="..\ImGuiColorTextEdit\TextEditor.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="Editor.h" />
     <ClInclude Include="Entities.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GLExterns.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="CLuaFunctions.h" />
+    <ClInclude Include="MemoryFunctions.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Script.h" />
     <ClInclude Include="ShaderSystem.h" />
@@ -265,6 +269,7 @@
     <ClInclude Include="Cheats.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Signatures.h" />
+    <ClInclude Include="Environment.h" />
     <ClInclude Include="TDLua.h" />
     <ClInclude Include="Teardown.h" />
     <ClInclude Include="TeardownFunctions.h" />
