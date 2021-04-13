@@ -20,8 +20,6 @@ namespace CLuaFunctions
 		void LoadVox(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 
 		void InitializeBody(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-
-		void SetLightPos(ScriptCore* pSC, lua_State*& L, retInfo* ret);
 	}
 
 	namespace EnvFunctions
