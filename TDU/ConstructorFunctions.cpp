@@ -62,7 +62,7 @@ void Teardown::Functions::Constructors::GetAddresses()
 	ScriptCCtor = (tEntityCCtor)Memory::readPtr(dwScriptCCtor, 1);
 
 	DWORD64 dwLightCCtor = Memory::FindPattern(Signatures::ClassConstructors::Light.pattern, Signatures::ClassConstructors::Light.mask, Globals::HModule);
-	LightCCtor = (tEntityCCtor)Memory::readPtr(dwScriptCCtor, 1);
+	LightCCtor = (tEntityCCtor)Memory::readPtr(dwLightCCtor, 1);
 
 	WriteLog(LogType::Address, "Body::Body: 0x%p", BodyCCtor);
 	WriteLog(LogType::Address, "Shape::Shape: 0x%p", ShapeCCtor);
