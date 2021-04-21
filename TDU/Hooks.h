@@ -2,21 +2,21 @@
 
 namespace Hooks
 {
-	namespace BaseHooks
-	{
-		void HookCW();
-		void HookMain();
-	}
-	
-	namespace MiscHooks
-	{
-		void HookLogFunction();
-	}
+	void HookCW();
+	void HookUpdate();
+
+	void HookLog();
 
 	namespace InputHooks
 	{
+		void HookCursor();
 		void HookWndProc();
-		void HookCursorPos();
+	}
+
+	namespace GLHooks
+	{
+		void HookSB();
+		void HookGlewInit();
 	}
 
 	namespace LuaHooks
@@ -25,17 +25,16 @@ namespace Hooks
 		void HookRegisterGameFunctions();
 	}
 
-	namespace GLHooks
+	inline void Init()
 	{
-		void HookGlewInit();
-		void HookSwapBuffers();
-	}
+		Hooks::HookLog();
 
-	namespace PlayerHooks
-	{
-		inline bool doUpdateCamera = true;
-		void HookUpdateCamera();
-	}
+		Hooks::InputHooks::HookCursor();
 
-	void InitHooks();
+		Hooks::GLHooks::HookSB();
+		Hooks::GLHooks::HookGlewInit();
+
+		Hooks::LuaHooks::HookLoadBuffer();
+		Hooks::LuaHooks::HookRegisterGameFunctions();
+	}
 }

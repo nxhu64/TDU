@@ -1,8 +1,8 @@
 #pragma once
-#include "Lua.hpp"
 #include "Script.h"
+#include "tdf_Lua.h"
 
-class retInfo
+class CRetInfo
 {
 public:
 	lua_State* L;
@@ -10,52 +10,24 @@ public:
 	int maxRet;
 };
 
-namespace CLuaFunctions
+namespace TDU
 {
-	namespace EntityFunctions
+	namespace CLua
 	{
-		void CreateBody(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void CreateShape(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		namespace EntityFunctions
+		{
+			void CreateBody(CScriptCore* pSC, lua_State*& L, CRetInfo* ret);
+			void CreateShape(CScriptCore* pSC, lua_State*& L, CRetInfo* ret);
+			void LoadVox(CScriptCore* pSC, lua_State*& L, CRetInfo* ret);
+			void InitializeBody(CScriptCore* pSC, lua_State*& L, CRetInfo* ret);
+		}
 
-		void LoadVox(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-
-		void InitializeBody(ScriptCore* pSC, lua_State*& L, retInfo* ret);
+		inline void RegisterCFunctions(CScriptCore_LuaState* pSCLS)
+		{
+			Teardown::LuaFunctions::RegisterLuaFunction(pSCLS, "CreateBody", EntityFunctions::CreateBody);
+			Teardown::LuaFunctions::RegisterLuaFunction(pSCLS, "CreateShape", EntityFunctions::CreateShape);
+			Teardown::LuaFunctions::RegisterLuaFunction(pSCLS, "LoadVox", EntityFunctions::LoadVox);
+			Teardown::LuaFunctions::RegisterLuaFunction(pSCLS, "InitializeBody", EntityFunctions::InitializeBody);
+		}
 	}
-
-	namespace EnvFunctions
-	{
-		void SetSunColor(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetSunColorTint(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetSunBrightness(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetSunSpread(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetSunLength(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetSunFogScale(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetSunGlare(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetAmbient(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetBrightness(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetExposure(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetFogColor(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetFogParams(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetWetness(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetPuddleAmount(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetPuddleSize(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetRain(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetNightLight(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void UpdateEnvironment(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetSkybox(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-	}
-
-	namespace PlayerFunctions
-	{
-		void SetRecoilSlow(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetRecoilFast(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-
-		void SetFlashlightColor(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetFlashlightIntensity(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetFlashlightReach(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetFlashlightFogScale(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-		void SetFlashlightFogIter(ScriptCore* pSC, lua_State*& L, retInfo* ret);
-	}
-
-	void RegisterCFunctions(ScriptCore_LuaState* pSCLS);
 }

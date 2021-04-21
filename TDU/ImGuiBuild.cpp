@@ -1,7 +1,7 @@
 /*
 	weird way to get imgui to compile without having to add it inside the project folder, so that it work as a git submodule
 	this is probably not the right way to do this lol, but it works
-	if anyone knows a better way to do this, please do let me know (as far as it doesn't involve CMake)
+	if anyone knows a better way to do this, please do let me know
 */
 
 #include <imgui.cpp>

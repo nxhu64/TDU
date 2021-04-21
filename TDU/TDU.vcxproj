@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|Win32">
-      <Configuration>Debug</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|Win32">
-      <Configuration>Release</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
@@ -26,19 +18,6 @@
     <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
@@ -56,12 +35,6 @@
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -69,18 +42,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>Game path here</OutDir>
     <TargetName>opengl32</TargetName>
     <LibraryPath>C:\lib\detours\lib.X64;C:\lib\glew\lib\Release\x64;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)ImGuiColorTextEdit;$(SolutionDir)imgui;$(SolutionDir)glm;C:\lib\glew\include;C:\lib\detours\include;$(IncludePath)</IncludePath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -89,29 +56,13 @@
     <IncludePath>$(SolutionDir)ImGuiColorTextEdit;$(SolutionDir)imgui;$(SolutionDir)glm;C:\lib\glew\include;C:\lib\detours\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\lib\detours\lib.X64;C:\lib\glew\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;TDU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
-    </Link>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;TDU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_AMD64_;_DEBUG;TDU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
@@ -127,26 +78,6 @@
       <AdditionalDependencies>glew32s.lib;OpenGL32.lib;detours.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;TDU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
-    </Link>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -155,7 +86,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;TDU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_AMD64_;NDEBUG;TDU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
@@ -172,112 +103,102 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\ImGuiColorTextEdit\TextEditor.cpp" />
-    <ClCompile Include="BaseHooks.cpp" />
-    <ClCompile Include="CLuaFunctions.cpp" />
-    <ClCompile Include="CLuaPlayerFunctions.cpp" />
-    <ClCompile Include="ConstructorFunctions.cpp" />
-    <ClCompile Include="CLuaEntityFunctions.cpp" />
-    <ClCompile Include="GLHooks.cpp" />
-    <ClCompile Include="ImGuiBuild.cpp" />
+    <ClCompile Include="..\lua-5.1.4\lapi.c" />
+    <ClCompile Include="..\lua-5.1.4\lauxlib.c" />
+    <ClCompile Include="..\lua-5.1.4\lbaselib.c" />
+    <ClCompile Include="..\lua-5.1.4\lcode.c" />
+    <ClCompile Include="..\lua-5.1.4\ldblib.c" />
+    <ClCompile Include="..\lua-5.1.4\ldebug.c" />
+    <ClCompile Include="..\lua-5.1.4\ldo.c" />
+    <ClCompile Include="..\lua-5.1.4\ldump.c" />
+    <ClCompile Include="..\lua-5.1.4\lfunc.c" />
+    <ClCompile Include="..\lua-5.1.4\lgc.c" />
+    <ClCompile Include="..\lua-5.1.4\linit.c" />
+    <ClCompile Include="..\lua-5.1.4\liolib.c" />
+    <ClCompile Include="..\lua-5.1.4\llex.c" />
+    <ClCompile Include="..\lua-5.1.4\lmathlib.c" />
+    <ClCompile Include="..\lua-5.1.4\lmem.c" />
+    <ClCompile Include="..\lua-5.1.4\loadlib.c" />
+    <ClCompile Include="..\lua-5.1.4\lobject.c" />
+    <ClCompile Include="..\lua-5.1.4\lopcodes.c" />
+    <ClCompile Include="..\lua-5.1.4\loslib.c" />
+    <ClCompile Include="..\lua-5.1.4\lparser.c" />
+    <ClCompile Include="..\lua-5.1.4\lstate.c" />
+    <ClCompile Include="..\lua-5.1.4\lstring.c" />
+    <ClCompile Include="..\lua-5.1.4\lstrlib.c" />
+    <ClCompile Include="..\lua-5.1.4\ltable.c" />
+    <ClCompile Include="..\lua-5.1.4\ltablib.c" />
+    <ClCompile Include="..\lua-5.1.4\ltm.c" />
+    <ClCompile Include="..\lua-5.1.4\luac.c" />
+    <ClCompile Include="..\lua-5.1.4\lundump.c" />
+    <ClCompile Include="..\lua-5.1.4\lvm.c" />
+    <ClCompile Include="..\lua-5.1.4\lzio.c" />
+    <ClCompile Include="..\lua-5.1.4\print.c" />
+    <ClCompile Include="CWHook.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="InputHook.cpp" />
+    <ClCompile Include="ImGuiBuild.cpp" />
+    <ClCompile Include="InputHooks.cpp" />
+    <ClCompile Include="LogHook.cpp" />
+    <ClCompile Include="LuaEntityFunctions.cpp" />
+    <ClCompile Include="LuaEnvironmentFunctions.cpp" />
     <ClCompile Include="LuaFunctions.cpp" />
     <ClCompile Include="LuaHooks.cpp" />
-    <ClCompile Include="lua\lapi.c" />
-    <ClCompile Include="lua\lauxlib.c" />
-    <ClCompile Include="lua\lbaselib.c" />
-    <ClCompile Include="lua\lcode.c" />
-    <ClCompile Include="lua\ldblib.c" />
-    <ClCompile Include="lua\ldebug.c" />
-    <ClCompile Include="lua\ldo.c" />
-    <ClCompile Include="lua\ldump.c" />
-    <ClCompile Include="lua\lfunc.c" />
-    <ClCompile Include="lua\lgc.c" />
-    <ClCompile Include="lua\linit.c" />
-    <ClCompile Include="lua\liolib.c" />
-    <ClCompile Include="lua\llex.c" />
-    <ClCompile Include="lua\lmathlib.c" />
-    <ClCompile Include="lua\lmem.c" />
-    <ClCompile Include="lua\loadlib.c" />
-    <ClCompile Include="lua\lobject.c" />
-    <ClCompile Include="lua\lopcodes.c" />
-    <ClCompile Include="lua\loslib.c" />
-    <ClCompile Include="lua\lparser.c" />
-    <ClCompile Include="lua\lstate.c" />
-    <ClCompile Include="lua\lstring.c" />
-    <ClCompile Include="lua\lstrlib.c" />
-    <ClCompile Include="lua\ltable.c" />
-    <ClCompile Include="lua\ltablib.c" />
-    <ClCompile Include="lua\ltm.c" />
-    <ClCompile Include="lua\lua.c" />
-    <ClCompile Include="lua\lundump.c" />
-    <ClCompile Include="lua\lvm.c" />
-    <ClCompile Include="lua\lzio.c" />
-    <ClCompile Include="lua\print.c" />
-    <ClCompile Include="Hooks.cpp" />
-    <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="CLuaEnvFunctions.cpp" />
-    <ClCompile Include="UtilFunctions.cpp" />
-    <ClCompile Include="MiscHooks.cpp" />
-    <ClCompile Include="Noclip.cpp" />
-    <ClCompile Include="PlayerHooks.cpp" />
-    <ClCompile Include="TDLua.cpp" />
-    <ClCompile Include="TeardownFunctions.cpp" />
-    <ClCompile Include="EntityFunctions.cpp" />
+    <ClCompile Include="ScriptEditor.cpp" />
+    <ClCompile Include="UpdateHook.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ImGuiColorTextEdit\TextEditor.h" />
-    <ClInclude Include="Config.h" />
-    <ClInclude Include="Editor.h" />
-    <ClInclude Include="Entities.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GLExterns.h" />
-    <ClInclude Include="Globals.h" />
+    <ClInclude Include="..\lua-5.1.4\lapi.h" />
+    <ClInclude Include="..\lua-5.1.4\lauxlib.h" />
+    <ClInclude Include="..\lua-5.1.4\lcode.h" />
+    <ClInclude Include="..\lua-5.1.4\ldebug.h" />
+    <ClInclude Include="..\lua-5.1.4\ldo.h" />
+    <ClInclude Include="..\lua-5.1.4\lfunc.h" />
+    <ClInclude Include="..\lua-5.1.4\lgc.h" />
+    <ClInclude Include="..\lua-5.1.4\llex.h" />
+    <ClInclude Include="..\lua-5.1.4\llimits.h" />
+    <ClInclude Include="..\lua-5.1.4\lmem.h" />
+    <ClInclude Include="..\lua-5.1.4\lobject.h" />
+    <ClInclude Include="..\lua-5.1.4\lopcodes.h" />
+    <ClInclude Include="..\lua-5.1.4\lparser.h" />
+    <ClInclude Include="..\lua-5.1.4\lstate.h" />
+    <ClInclude Include="..\lua-5.1.4\lstring.h" />
+    <ClInclude Include="..\lua-5.1.4\ltable.h" />
+    <ClInclude Include="..\lua-5.1.4\ltm.h" />
+    <ClInclude Include="..\lua-5.1.4\lua.h" />
+    <ClInclude Include="..\lua-5.1.4\luaconf.h" />
+    <ClInclude Include="..\lua-5.1.4\lualib.h" />
+    <ClInclude Include="..\lua-5.1.4\lundump.h" />
+    <ClInclude Include="..\lua-5.1.4\lvm.h" />
+    <ClInclude Include="..\lua-5.1.4\lzio.h" />
     <ClInclude Include="CLuaFunctions.h" />
-    <ClInclude Include="MemoryFunctions.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="Script.h" />
-    <ClInclude Include="ShaderSystem.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="CSignature.h" />
+    <ClInclude Include="Entities.h" />
+    <ClInclude Include="Environment.h" />
+    <ClInclude Include="Exports.h" />
+    <ClInclude Include="Game.h" />
+    <ClCompile Include="GLHooks.cpp" />
+    <ClInclude Include="Globals.h" />
+    <ClInclude Include="GameSettings.h" />
     <ClInclude Include="Hooks.h" />
+    <ClInclude Include="LuaUtils.h" />
+    <ClInclude Include="Menus.h" />
+    <ClInclude Include="LuaFunctions.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Loader.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Lua.hpp" />
-    <ClInclude Include="lua\lapi.h" />
-    <ClInclude Include="lua\lauxlib.h" />
-    <ClInclude Include="lua\lcode.h" />
-    <ClInclude Include="lua\ldebug.h" />
-    <ClInclude Include="lua\ldo.h" />
-    <ClInclude Include="lua\lfunc.h" />
-    <ClInclude Include="lua\lgc.h" />
-    <ClInclude Include="lua\llex.h" />
-    <ClInclude Include="lua\llimits.h" />
-    <ClInclude Include="lua\lmem.h" />
-    <ClInclude Include="lua\lobject.h" />
-    <ClInclude Include="lua\lopcodes.h" />
-    <ClInclude Include="lua\lparser.h" />
-    <ClInclude Include="lua\lstate.h" />
-    <ClInclude Include="lua\lstring.h" />
-    <ClInclude Include="lua\ltable.h" />
-    <ClInclude Include="lua\ltm.h" />
-    <ClInclude Include="lua\lua.h" />
-    <ClInclude Include="lua\luaconf.h" />
-    <ClInclude Include="lua\lualib.h" />
-    <ClInclude Include="lua\lundump.h" />
-    <ClInclude Include="lua\lvm.h" />
-    <ClInclude Include="lua\lzio.h" />
     <ClInclude Include="Memory.h" />
-    <ClInclude Include="Cheats.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Script.h" />
     <ClInclude Include="Signatures.h" />
-    <ClInclude Include="Environment.h" />
-    <ClInclude Include="TDLua.h" />
-    <ClInclude Include="Teardown.h" />
-    <ClInclude Include="TeardownFunctions.h" />
-    <ClInclude Include="Time.h" />
+    <ClInclude Include="tdf_Constructors.h" />
+    <ClInclude Include="tdf_Entities.h" />
+    <ClInclude Include="tdf_Lua.h" />
+    <ClInclude Include="tdf_Memory.h" />
+    <ClInclude Include="tdf_Utils.h" />
     <ClInclude Include="Types.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="lua\Makefile" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,34 +1,12 @@
+#pragma once
 /*
-	TDU Configuration file
-	
-	You can add your own configuration values here, just define them and then check them using the #if directive
-	
-	To-do: Add more configurable values, so that users don't need to edit CPP files, and instead edit stuff here (i.e. keybinds)
+																   TDU Config
+	You can change whichever setting you want by changing the value, most things here are debug settings, at least until a config parser is implemented
 */
 
-
 /*
-	Console settings
+	Logger settings
 */
-
-// Show console / disable this if for some reason you don't want it
-#define SHOW_CONSOLE
-
-// Only useful when the game updates, so you can see which functions the signatures no longer work for
-//#define PRINT_ADDRESSES
-
-// Only print errors, ignore generic messages, addresses (this value overrides PRINT_ADDRESSES), and other stuff (Doesn't disable Lua's print cout)
-//#define PRINT_ERRORS_ONLY
-
-/*
-	Lua settings
-*/
-
-// Open the debug lib
-#define ENABLE_DEBUG_LIB
-
-// Open the OS lib (Not recommended, unless you're running scripts you really trust)
-//#define ENABLE_OS_LIB
-
-// Open the IO lib
-//#define ENABLE_IO_LIB
+inline const bool c_ConEnabled = true; // Enable debug console, if set to false AllocConsole wont be called, cout will still happen though
+inline const bool c_ConShowAddresses = true; // Only useful when testing signatures (after the game updates or when adding new ones), should be disabled on release builds
+inline const bool c_ConErrorsOnly = false; // Only show errors, ignore generic messages and addresses

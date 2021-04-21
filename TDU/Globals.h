@@ -1,12 +1,7 @@
 #pragma once
+#include <wtypes.h>
 
-#include <string>
-#include <Windows.h>
-
-namespace Globals
-{
-	inline std::string version("4.13.2021 build");
-	inline HWND HWnd;
-	inline HMODULE HModule;
-	inline float FPS;
-}
+inline HWND g_Wnd;
+inline HMODULE g_Module;
+inline char g_Version[10] = "4.21.2021";
+inline bool g_FreeCursor = false;

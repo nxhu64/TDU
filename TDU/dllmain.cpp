@@ -1,7 +1,8 @@
-#include <Windows.h>
+#include "Exports.h"
 
-#include "GLExterns.h"
 #include "Loader.h"
+
+#include <minwindef.h>
 
 BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved )
 {
@@ -9,7 +10,7 @@ BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpRese
     {
     case DLL_PROCESS_ATTACH:
 	{
-		Loader::Init();
+        TDU::Loader::Init();
 		break;
 	}
     case DLL_THREAD_ATTACH:

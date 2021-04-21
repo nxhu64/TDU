@@ -1,7 +1,5 @@
-// Lazy way to import lua headers 
-
 extern "C" {
-	#include "Lua/lua.h"
-	#include "Lua/lualib.h"
-	#include "Lua/lauxlib.h"
+	#include "../lua-5.1.4/lua.h"
+	#include "../lua-5.1.4/lualib.h"
+	#include "../lua-5.1.4/lauxlib.h"
 }

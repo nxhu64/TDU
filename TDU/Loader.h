@@ -1,42 +1,71 @@
-#include "Logger.h"
-#include "Globals.h"
+#pragma once
 #include "Config.h"
+#include "Globals.h"
+#include "Logger.h"
+
 #include "Hooks.h"
-#include "Cheats.h"
-#include "TDLua.h"
-#include "TeardownFunctions.h"
 
-namespace Loader
+#include "tdf_Constructors.h"
+#include "tdf_Lua.h"
+#include "tdf_Memory.h"
+#include "tdf_Entities.h"
+#include "tdf_Utils.h"
+
+namespace TDU
 {
-	inline void Init()
+	namespace Loader
 	{
-	
-	#ifdef SHOW_CONSOLE
-		// allocate console for logging
-		AllocConsole();
-		freopen("CONOUT$", "w", stdout);
-		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		inline void Init()
+		{
+			if (c_ConEnabled)
+			{
+				// allocate console for logging
+				AllocConsole();
+				freopen("CONOUT$", "w", stdout);
+				HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
-		// enable escape sequences
-		DWORD dwMode = 0;
-		GetConsoleMode(hConsole, &dwMode);
-		dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-		SetConsoleMode(hConsole, dwMode);
-	#endif
+				// enable escape sequences
+				DWORD dwMode = 0;
+				GetConsoleMode(hConsole, &dwMode);
+				dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+				SetConsoleMode(hConsole, dwMode);
+			}
 
-		WriteLog(LogType::Special, " _________  ______   __  __      ");
-		WriteLog(LogType::Special, "/________/\\/_____/\\ /_/\\/_/\\     ");
-		WriteLog(LogType::Special, "\\__.::.__\\/\\:::_ \\ \\\\:\\ \\:\\ \\    ");
-		WriteLog(LogType::Special, "   \\::\\ \\   \\:\\ \\ \\ \\\\:\\ \\:\\ \\   ");
-		WriteLog(LogType::Special, "    \\::\\ \\   \\:\\ \\ \\ \\\\:\\ \\:\\ \\  ");
-		WriteLog(LogType::Special, "     \\::\\ \\   \\:\\/.:| |\\:\\_\\:\\ \\ ");
-		WriteLog(LogType::Special, "      \\__\\/    \\____/_/ \\_____\\/ ");
-		WriteLog(LogType::Special, "Teardown unleashed v%s", Globals::version.c_str());
-		WriteLog(LogType::Special, "Shout-out to Xorberax - SK83RJOSH - Knebb\n");
+			#ifndef _DEBUG
+				strcat(g_Version, " release build");
+			#else
+				strcat(g_Version, " debug build");
+			#endif
 
-		// Get the game's HMODULE to be later used (as base address) when reading memory
-		Globals::HModule = GetModuleHandle(NULL);
+			WriteLog(ELogType::Special, " _________  ______   __  __      ");
+			WriteLog(ELogType::Special, "/________/\\/_____/\\ /_/\\/_/\\     ");
+			WriteLog(ELogType::Special, "\\__.::.__\\/\\:::_ \\ \\\\:\\ \\:\\ \\    ");
+			WriteLog(ELogType::Special, "   \\::\\ \\   \\:\\ \\ \\ \\\\:\\ \\:\\ \\   ");
+			WriteLog(ELogType::Special, "    \\::\\ \\   \\:\\ \\ \\ \\\\:\\ \\:\\ \\  ");
+			WriteLog(ELogType::Special, "     \\::\\ \\   \\:\\/.:| |\\:\\_\\:\\ \\ ");
+			WriteLog(ELogType::Special, "      \\__\\/    \\____/_/ \\_____\\/ ");
+			WriteLog(ELogType::Special, "Teardown unleashed - %s", g_Version);
+			WriteLog(ELogType::Special, "Shout-out to Xorberax - SK83RJOSH - Knebb\n");
 
-		Hooks::BaseHooks::HookCW();
+			g_Module = GetModuleHandle(NULL);
+
+			Hooks::HookCW();
+		}
+
+
+		/*
+			Called after CreateWindow call, when this is called it means SteamStub has loaded the exe into memory
+			This is a placeholder until i reverse SteamStub
+		*/
+		inline void InitUnpacked()
+		{
+			Teardown::Constructors::GetAddresses();
+			Teardown::LuaFunctions::GetAddresses();
+			Teardown::MemoryFunctions::GetAddresses();
+			Teardown::EntityFunctions::GetAddresses();
+			Teardown::UtilFunctions::GetAddresses();
+
+			Hooks::Init();
+		}
 	}
 }

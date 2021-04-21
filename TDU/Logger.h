@@ -1,15 +1,16 @@
 #ifndef Logger
 #define Logger
 
+#include <stdlib.h>
+#include <vadefs.h>
+#include <stdarg.h>
 #include <iostream>
-#include <Windows.h>
-#include <iomanip>
 
 #include "Config.h"
 
 #define WriteLog(logType, ...) Logger::LogInternal(__func__, __FILE__, logType, __VA_ARGS__)
 
-enum class LogType
+enum class ELogType
 {
 	Generic = 1,
 	Address = 2,
@@ -20,11 +21,14 @@ enum class LogType
 namespace Logger
 {
 	template<char const*... Args_t>
-	inline void LogInternal(const char* funcName, const char* fullFileName, LogType type, const char* fmt, ...)
+	inline void LogInternal(const char* sFuncName, const char* sFileName, ELogType eType, const char* fmt, ...)
 	{
-		char fileName[255];
+		if (!c_ConEnabled)
+			return;
+
+		char sSplitPath[255];
 		char ext[20];
-		_splitpath(fullFileName, NULL, NULL, fileName, ext);
+		_splitpath(sFileName, NULL, NULL, sSplitPath, ext);
 
 		char buff[4096];
 		va_list args;
@@ -33,23 +37,23 @@ namespace Logger
 		int rc = vsnprintf(buff, sizeof(buff), fmt, args);
 		va_end(args);
 
-		switch (type)
+		switch (eType)
 		{
-#ifndef PRINT_ERRORS_ONLY
-		case LogType::Generic:
-			std::cout << "\033[97;44;1m[" << funcName << " @ " << fileName << ext << "]\033[0m " << buff << std::endl;
+			if (!c_ConErrorsOnly)
+			{
+				case ELogType::Generic:
+					std::cout << "\033[97;44;1m[" << sFuncName << " @ " << sSplitPath << ext << "]\033[0m " << buff << std::endl;
+					break;
+				case ELogType::Address:
+					if (c_ConShowAddresses)
+						std::cout << "\033[30;103;1m[" << "ADDRESS" << " @ " << sSplitPath << ext << "]\033[0m " << buff << std::endl;
+					break;
+			}
+		case ELogType::Error:
+			std::cout << "\033[30;41;1m[" << sFuncName << " @ " << sSplitPath << ext << "]\033[0m " << buff << std::endl;
 			break;
-	#ifdef PRINT_ADDRESSES
-		case LogType::Address:
-			std::cout << "\033[30;103;1m[" << "ADDRESS" << " @ " << fileName << ext << "]\033[0m " << buff << std::endl;
-			break;
-	#endif
-		case LogType::Error:
-			std::cout << "\033[30;41;1m[" << funcName << " @ " << fileName << ext << "]\033[0m " << buff << std::endl;
-			break;
-#endif
-		case LogType::Special:
-			std::cout << "\033[97;44;1m[" << funcName << " @ " << fileName << ext << "]\033[0m " << buff << std::endl;
+		case ELogType::Special:
+			std::cout << "\033[97;44;1m[" << sFuncName << " @ " << sSplitPath << ext << "]\033[0m " << buff << std::endl;
 			break;
 		}
 	}

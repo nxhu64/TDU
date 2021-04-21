@@ -3,7 +3,8 @@
 #include "Globals.h"
 #include "Memory.h"
 #include "Signatures.h"
-#include "Cheats.h"
+
+#include "Menus.h"
 
 #include <detours.h>
 
@@ -19,8 +20,7 @@
 	SwapBuffers hook
 	- Used for rendering ImGui / menus
 */
-
-typedef BOOL	(*twglSwapBuffers)		(_In_ HDC hDc);
+typedef BOOL(*twglSwapBuffers)		(_In_ HDC hDc);
 twglSwapBuffers owglSwapBuffers;
 
 bool hwglSwapBuffers(_In_ HDC hDc)
@@ -29,7 +29,7 @@ bool hwglSwapBuffers(_In_ HDC hDc)
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 
-	Cheats::Menu::Draw();
+	TDU::Menus::DrawMenus();
 
 	ImGui::EndFrame();
 	ImGui::Render();
@@ -38,11 +38,11 @@ bool hwglSwapBuffers(_In_ HDC hDc)
 	return owglSwapBuffers(hDc);
 }
 
-void Hooks::GLHooks::HookSwapBuffers()
+void Hooks::GLHooks::HookSB()
 {
 	HMODULE OpenGL = GetModuleHandle("C:\\Windows\\System32\\opengl32.dll");
 	owglSwapBuffers = (twglSwapBuffers)GetProcAddress(OpenGL, "wglSwapBuffers");
-	WriteLog(LogType::Address, "wglSwapBuffers: 0x%p | hook: 0x%p", owglSwapBuffers, hwglSwapBuffers);
+	WriteLog(ELogType::Address, "wglSwapBuffers: 0x%p", owglSwapBuffers);
 
 	DetourTransactionBegin();
 	DetourUpdateThread(GetCurrentThread());
@@ -58,7 +58,7 @@ void Hooks::GLHooks::HookSwapBuffers()
 typedef void(*tglewInit)	();
 tglewInit oglewInit;
 
-void resetImgui()
+void ResetImgui()
 {
 	// shutdown imgui just in case
 	ImGui_ImplWin32_Shutdown();
@@ -66,7 +66,7 @@ void resetImgui()
 
 	ImGui::CreateContext();
 	const char* glsl_version = "#version 130";
-	ImGui_ImplWin32_Init(Globals::HWnd);
+	ImGui_ImplWin32_Init(g_Wnd);
 	ImGui_ImplOpenGL3_Init(glsl_version);
 }
 
@@ -75,13 +75,13 @@ void hglewInit()
 	oglewInit();
 	glewInit();
 
-	resetImgui();
+	ResetImgui();
 }
 
 void Hooks::GLHooks::HookGlewInit()
 {
-	oglewInit = (tglewInit)Memory::FindPattern(Signatures::glewInit.pattern, Signatures::glewInit.mask, Globals::HModule);
-	WriteLog(LogType::Address, "glewInit: 0x%p | hook: 0x%p", oglewInit, hglewInit);
+	oglewInit = (tglewInit)Memory::dwFindPattern(Signatures::glewInit);
+	WriteLog(ELogType::Address, "glewInit: 0x%p", oglewInit);
 
 	DetourTransactionBegin();
 	DetourUpdateThread(GetCurrentThread());

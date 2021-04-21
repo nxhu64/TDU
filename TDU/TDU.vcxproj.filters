@@ -1,354 +1,321 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Misc">
-      <UniqueIdentifier>{f9ffa3ba-7b77-47c9-b158-902382839258}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lua 5.1">
-      <UniqueIdentifier>{25dcd959-6142-454d-9054-4e4cf1a18715}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Utils">
-      <UniqueIdentifier>{0863f537-7128-4a56-bae1-06f371b4b889}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Hooks">
-      <UniqueIdentifier>{66cd5404-ab06-4a65-9e24-336fca2c81c3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Teardown">
-      <UniqueIdentifier>{5cf5f735-9d94-434a-aa3d-aa384ba7b237}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Cheats">
-      <UniqueIdentifier>{04cef78b-e2dc-4536-b816-7ae113b78ecd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ImGuiColorTextEdit">
       <UniqueIdentifier>{48dea0e6-45e6-45eb-8de3-f9d8fbec1178}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Teardown\Lua">
-      <UniqueIdentifier>{1cc75d86-f03a-465e-a537-f0f845cd5910}</UniqueIdentifier>
+    <Filter Include="Lua">
+      <UniqueIdentifier>{25dcd959-6142-454d-9054-4e4cf1a18715}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Teardown\Functions">
-      <UniqueIdentifier>{80a21283-89f7-4796-b3f0-213d6fc0f618}</UniqueIdentifier>
+    <Filter Include="TDU">
+      <UniqueIdentifier>{0daa5a46-26ee-43e3-b54c-3ea32cefdf00}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\CLuaFunctions">
-      <UniqueIdentifier>{cb65b361-3a51-444b-ab1c-e84997067fa5}</UniqueIdentifier>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{5cbe30eb-dda2-4b8f-bf19-79f023002670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hooks">
+      <UniqueIdentifier>{b83eaf21-5dee-4d0f-983d-641982a37ac6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TDU\Lua">
+      <UniqueIdentifier>{439641b1-f6e5-402b-af1f-e0bf482b224f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TDU\Menus">
+      <UniqueIdentifier>{4cc18a4f-660f-4836-a7cc-4199059d8e4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TDU\Lua\CLuaFunctions">
+      <UniqueIdentifier>{e456a52b-b9ec-4cfe-9289-a8cf7860b8a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Teardown">
+      <UniqueIdentifier>{44d1f4af-216a-4202-a5bf-ddd60e58ddfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Teardown\Functions">
+      <UniqueIdentifier>{624fbb2d-41f1-4041-8b8e-9dcc81af42e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Teardown\Classes">
+      <UniqueIdentifier>{0376ff1f-ed00-49e5-94ef-7730e3e0c642}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ImGuiBuild.cpp">
-      <Filter>Misc</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lapi.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lauxlib.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lbaselib.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lcode.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\ldblib.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\ldebug.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\ldo.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\ldump.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lfunc.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lgc.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\linit.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\liolib.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\llex.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lmathlib.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lmem.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\loadlib.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lobject.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lopcodes.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\loslib.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lparser.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lstate.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lstring.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lstrlib.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\ltable.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\ltablib.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\ltm.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lua.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lundump.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lvm.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\lzio.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\print.c">
-      <Filter>Lua 5.1</Filter>
-    </ClCompile>
-    <ClCompile Include="Hooks.cpp">
-      <Filter>Source Files\Hooks</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseHooks.cpp">
-      <Filter>Source Files\Hooks</Filter>
-    </ClCompile>
-    <ClCompile Include="InputHook.cpp">
-      <Filter>Source Files\Hooks</Filter>
-    </ClCompile>
-    <ClCompile Include="MiscHooks.cpp">
-      <Filter>Source Files\Hooks</Filter>
-    </ClCompile>
-    <ClCompile Include="Noclip.cpp">
-      <Filter>Source Files\Cheats</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files\Cheats</Filter>
-    </ClCompile>
     <ClCompile Include="..\ImGuiColorTextEdit\TextEditor.cpp">
       <Filter>ImGuiColorTextEdit</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerHooks.cpp">
-      <Filter>Source Files\Hooks</Filter>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="..\lua-5.1.4\lapi.c">
+      <Filter>Lua</Filter>
     </ClCompile>
-    <ClCompile Include="TDLua.cpp">
-      <Filter>Source Files\Teardown\Lua</Filter>
+    <ClCompile Include="..\lua-5.1.4\lauxlib.c">
+      <Filter>Lua</Filter>
     </ClCompile>
-    <ClCompile Include="TeardownFunctions.cpp">
-      <Filter>Source Files\Teardown\Functions</Filter>
+    <ClCompile Include="..\lua-5.1.4\lbaselib.c">
+      <Filter>Lua</Filter>
     </ClCompile>
-    <ClCompile Include="LuaFunctions.cpp">
-      <Filter>Source Files\Teardown\Functions</Filter>
+    <ClCompile Include="..\lua-5.1.4\lcode.c">
+      <Filter>Lua</Filter>
     </ClCompile>
-    <ClCompile Include="ConstructorFunctions.cpp">
-      <Filter>Source Files\Teardown\Functions</Filter>
+    <ClCompile Include="..\lua-5.1.4\ldblib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\ldebug.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\ldo.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\ldump.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\lfunc.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\lgc.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\linit.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\liolib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\llex.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\lmathlib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\lmem.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\loadlib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\lobject.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\lopcodes.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\loslib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\lparser.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\lstate.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\lstring.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\lstrlib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\ltable.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\ltablib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\ltm.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\lundump.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\lvm.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\lzio.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\print.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lua-5.1.4\luac.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGuiBuild.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="CWHook.cpp">
+      <Filter>Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHooks.cpp">
+      <Filter>Hooks</Filter>
     </ClCompile>
     <ClCompile Include="LuaHooks.cpp">
-      <Filter>Source Files\Hooks</Filter>
+      <Filter>Hooks</Filter>
     </ClCompile>
-    <ClCompile Include="CLuaFunctions.cpp">
-      <Filter>Source Files\CLuaFunctions</Filter>
+    <ClCompile Include="UpdateHook.cpp">
+      <Filter>Hooks</Filter>
     </ClCompile>
-    <ClCompile Include="CLuaEntityFunctions.cpp">
-      <Filter>Source Files\CLuaFunctions</Filter>
-    </ClCompile>
-    <ClCompile Include="EntityFunctions.cpp">
-      <Filter>Source Files\Teardown\Functions</Filter>
-    </ClCompile>
-    <ClCompile Include="UtilFunctions.cpp">
-      <Filter>Source Files\Teardown\Functions</Filter>
+    <ClCompile Include="LogHook.cpp">
+      <Filter>Hooks</Filter>
     </ClCompile>
     <ClCompile Include="GLHooks.cpp">
-      <Filter>Source Files\Hooks</Filter>
+      <Filter>Hooks</Filter>
     </ClCompile>
-    <ClCompile Include="CLuaEnvFunctions.cpp">
-      <Filter>Source Files\CLuaFunctions</Filter>
+    <ClCompile Include="ScriptEditor.cpp">
+      <Filter>TDU\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="CLuaPlayerFunctions.cpp">
-      <Filter>Source Files\CLuaFunctions</Filter>
+    <ClCompile Include="LuaEntityFunctions.cpp">
+      <Filter>TDU\Lua\CLuaFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaFunctions.cpp">
+      <Filter>TDU\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaEnvironmentFunctions.cpp">
+      <Filter>TDU\Lua\CLuaFunctions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GLExterns.h">
-      <Filter>Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lapi.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lauxlib.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lcode.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\ldebug.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\ldo.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lfunc.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lgc.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\llex.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\llimits.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lmem.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lobject.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lopcodes.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lparser.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lstate.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lstring.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\ltable.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\ltm.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lua.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\luaconf.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lualib.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lundump.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lvm.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\lzio.h">
-      <Filter>Lua 5.1</Filter>
-    </ClInclude>
-    <ClInclude Include="Logger.h">
-      <Filter>Source Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Loader.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Hooks.h">
-      <Filter>Source Files\Hooks</Filter>
-    </ClInclude>
-    <ClInclude Include="Config.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Memory.h">
-      <Filter>Source Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Lua.hpp">
-      <Filter>Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Source Files\Teardown</Filter>
-    </ClInclude>
-    <ClInclude Include="Types.h">
-      <Filter>Source Files\Teardown</Filter>
-    </ClInclude>
-    <ClInclude Include="Signatures.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Source Files\Teardown</Filter>
-    </ClInclude>
-    <ClInclude Include="Teardown.h">
-      <Filter>Source Files\Teardown</Filter>
-    </ClInclude>
-    <ClInclude Include="Cheats.h">
-      <Filter>Source Files\Cheats</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderSystem.h">
-      <Filter>Source Files\Teardown</Filter>
-    </ClInclude>
     <ClInclude Include="..\ImGuiColorTextEdit\TextEditor.h">
       <Filter>ImGuiColorTextEdit</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Source Files\Teardown</Filter>
+    <ClInclude Include="..\lua-5.1.4\lapi.h">
+      <Filter>Lua</Filter>
     </ClInclude>
-    <ClInclude Include="Entities.h">
-      <Filter>Source Files\Teardown</Filter>
+    <ClInclude Include="..\lua-5.1.4\lauxlib.h">
+      <Filter>Lua</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
-      <Filter>Source Files\Utils</Filter>
+    <ClInclude Include="..\lua-5.1.4\lcode.h">
+      <Filter>Lua</Filter>
     </ClInclude>
-    <ClInclude Include="TDLua.h">
-      <Filter>Source Files\Teardown\Lua</Filter>
+    <ClInclude Include="..\lua-5.1.4\ldebug.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\ldo.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\lfunc.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\lgc.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\llex.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\llimits.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\lmem.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\lobject.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\lopcodes.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\lparser.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\lstate.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\lstring.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\ltable.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\ltm.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\lua.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\luaconf.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\lualib.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\lundump.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\lvm.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua-5.1.4\lzio.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="Logger.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Loader.h">
+      <Filter>TDU</Filter>
+    </ClInclude>
+    <ClInclude Include="Exports.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="CSignature.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Signatures.h">
+      <Filter>Teardown\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Teardown\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="tdf_Memory.h">
+      <Filter>Teardown\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="tdf_Lua.h">
+      <Filter>Teardown\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="tdf_Constructors.h">
+      <Filter>Teardown\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Lua.hpp">
+      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Script.h">
-      <Filter>Source Files\Teardown</Filter>
+      <Filter>Teardown\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="TeardownFunctions.h">
-      <Filter>Source Files\Teardown\Functions</Filter>
-    </ClInclude>
-    <ClInclude Include="CLuaFunctions.h">
-      <Filter>Source Files\CLuaFunctions</Filter>
-    </ClInclude>
-    <ClInclude Include="Globals.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MemoryFunctions.h">
-      <Filter>Source Files\Teardown\Functions</Filter>
+    <ClInclude Include="Entities.h">
+      <Filter>Teardown\Classes</Filter>
     </ClInclude>
     <ClInclude Include="Environment.h">
-      <Filter>Source Files\Teardown</Filter>
+      <Filter>Teardown\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Editor.h">
-      <Filter>Source Files\Teardown</Filter>
+    <ClInclude Include="Game.h">
+      <Filter>Teardown\Classes</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="lua\Makefile">
-      <Filter>Lua 5.1</Filter>
-    </None>
+    <ClInclude Include="GameSettings.h">
+      <Filter>Teardown\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Teardown\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Teardown\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks.h">
+      <Filter>Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="tdf_Entities.h">
+      <Filter>Teardown\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Menus.h">
+      <Filter>TDU\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="CLuaFunctions.h">
+      <Filter>TDU\Lua\CLuaFunctions</Filter>
+    </ClInclude>
+    <ClInclude Include="tdf_Utils.h">
+      <Filter>Teardown\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaFunctions.h">
+      <Filter>TDU\Lua</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
