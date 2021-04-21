@@ -8,3 +8,6 @@
 	path = ImGuiColorTextEdit
 	url = https://github.com/BalazsJako/ImGuiColorTextEdit
 	branch = dev
+[submodule "lua-5.1.4"]
+	path = lua-5.1.4
+	url = https://github.com/rwen2012/lua-5.1.4/
