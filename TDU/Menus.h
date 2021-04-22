@@ -9,10 +9,7 @@ namespace TDU
 
 		inline void DrawMenus()
 		{
-			if (g_FreeCursor)
-			{
-				DrawScriptEditor();
-			}
+			DrawScriptEditor();
 		}
 	}
 }
