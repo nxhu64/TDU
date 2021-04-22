@@ -27,6 +27,8 @@ void TDU::Menus::DrawScriptEditor()
 {
 	std::call_once(fHasInitializedEditor, InitEditor);
 
+	pIO->MouseDrawCursor = g_FreeCursor;
+
 	ImGui::SetNextWindowPos(ImVec2((pIO->DisplaySize.x / 20 * 2) + pIO->DisplaySize.x / 3, pIO->DisplaySize.y / 20), ImGuiCond_FirstUseEver);
 	ImGui::SetNextWindowSize(ImVec2(pIO->DisplaySize.x / 3, pIO->DisplaySize.y / 2), ImGuiCond_FirstUseEver);
 
