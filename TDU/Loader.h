@@ -59,9 +59,9 @@ namespace TDU
 		*/
 		inline void InitUnpacked()
 		{
-			Teardown::Constructors::GetAddresses();
 			Teardown::LuaFunctions::GetAddresses();
 			Teardown::MemoryFunctions::GetAddresses();
+			Teardown::Constructors::GetAddresses();
 			Teardown::EntityFunctions::GetAddresses();
 			Teardown::UtilFunctions::GetAddresses();
 

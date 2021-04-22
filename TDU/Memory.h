@@ -21,15 +21,16 @@ namespace Memory
 		return (SIZE_T) * (DWORD*)(Address + Offset);
 	}
 
-	inline bool bCompare(const BYTE* pData, const BYTE* bMask, const char* szMask)
+	inline bool bCompare(const BYTE* pData, PBYTE bPattern, const char* cMask)
 	{
-		for (; *szMask; ++szMask, ++pData, ++bMask)
+		for (; *cMask; ++cMask, ++pData, ++bPattern)
 		{
-			if (*szMask == 'x' && *pData != *bMask)
+			if (*cMask == 'x' && *pData != *bPattern)
 				return false;
 		}
 		return true;
 	}
+
 
 	inline DWORD64 dwFindPattern(CSignature Sig)
 	{
@@ -49,7 +50,7 @@ namespace Memory
 				return (DWORD64)lReadPtr(dwBaseAddress + i, 1);
 			}
 		}
-		assert(!"ReadPtr address == nullptr");
+		assert(!"dwFindPattern return == nullptr");
 		return 0;
 	}
 }

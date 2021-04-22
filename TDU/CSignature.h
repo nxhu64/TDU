@@ -3,12 +3,21 @@
 class CSignature
 {
 public:
-	CSignature(const char* nPattern, const char* nMask, bool bDirectRef)
+	CSignature(const char* cPattern, const char* cMask, bool bDirectRef)
 	{
-		m_Pattern = (PBYTE)nPattern; m_Mask = nMask; m_DirectRef = bDirectRef;
+		int lLength = strlen(cMask);
+
+		m_Pattern = (PBYTE)malloc(lLength + 1);
+		memcpy(m_Pattern, (PBYTE)cPattern, lLength);
+
+		m_Mask = (char*)malloc(lLength + 1);
+		strcpy(m_Mask, cMask);
+		m_Mask[strlen(cMask)] = 0;
+
+		m_DirectRef = bDirectRef;
 	}
 
 	PBYTE m_Pattern;
-	const char* m_Mask;
+	char* m_Mask;
 	bool m_DirectRef;
 };
