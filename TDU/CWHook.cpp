@@ -2,6 +2,7 @@
 #include "Globals.h"
 #include "Logger.h"
 #include "Loader.h"
+#include "tdf_Memory.h"
 
 #include <detours.h>
 #include <mutex>
@@ -30,8 +31,11 @@ HWND hCreateWindowExA(DWORD dwExStyle, LPCSTR lpClassName, LPCSTR lpWindowName, 
 
 	if (!lstrcmp(lpWindowName, "Teardown"))
 	{
-		char windowName[18] = "TDU - ";
-		strcat(windowName, g_Version);
+		size_t cBuffSize = strlen(g_Version) + 6;
+		char* windowName = (char*)Teardown::MemoryFunctions::Alloc(cBuffSize);
+		memcpy(windowName, "TDU - ", 6);
+		memcpy(windowName + 6, g_Version, strlen(g_Version));
+		windowName[cBuffSize] = 0;
 
 		g_Wnd = oCreateWindowExA(dwExStyle, lpClassName, windowName, dwStyle, X, Y, nWidth, nHeight, hWndParent, hMenu, hInstance, lpParam);
 		
@@ -44,6 +48,7 @@ HWND hCreateWindowExA(DWORD dwExStyle, LPCSTR lpClassName, LPCSTR lpWindowName, 
 
 	return oCreateWindowExA(dwExStyle, lpClassName, lpWindowName, dwStyle, X, Y, nWidth, nHeight, hWndParent, hMenu, hInstance, lpParam);
 }
+
 void Hooks::HookCW()
 {
 	HMODULE USER32 = GetModuleHandle("USER32.dll");

@@ -3,5 +3,5 @@
 
 inline HWND g_Wnd;
 inline HMODULE g_Module;
-inline char g_Version[10] = "4.21.2021";
+inline char g_Version[28] = "4.21.2021";
 inline bool g_FreeCursor = false;
