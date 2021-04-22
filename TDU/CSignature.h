@@ -5,7 +5,7 @@ class CSignature
 public:
 	CSignature(const char* cPattern, const char* cMask, bool bDirectRef)
 	{
-		int lLength = strlen(cMask);
+		size_t lLength = strlen(cMask);
 
 		m_Pattern = (PBYTE)malloc(lLength + 1);
 		memcpy(m_Pattern, (PBYTE)cPattern, lLength);
