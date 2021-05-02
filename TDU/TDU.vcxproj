@@ -44,14 +44,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>Game path here</OutDir>
+    <OutDir>E:\SteamLibrary\steamapps\common\Teardown 0.7.1</OutDir>
     <TargetName>opengl32</TargetName>
     <LibraryPath>C:\lib\detours\lib.X64;C:\lib\glew\lib\Release\x64;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)ImGuiColorTextEdit;$(SolutionDir)imgui;$(SolutionDir)glm;C:\lib\glew\include;C:\lib\detours\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>Game path here</OutDir>
+    <OutDir>E:\SteamLibrary\steamapps\common\Teardown 0.7.1</OutDir>
     <TargetName>opengl32</TargetName>
     <IncludePath>$(SolutionDir)ImGuiColorTextEdit;$(SolutionDir)imgui;$(SolutionDir)glm;C:\lib\glew\include;C:\lib\detours\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\lib\detours\lib.X64;C:\lib\glew\lib\Release\x64;$(LibraryPath)</LibraryPath>
@@ -68,7 +68,7 @@
       </PrecompiledHeaderFile>
       <IntrinsicFunctions>
       </IntrinsicFunctions>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -91,6 +91,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -180,7 +181,6 @@
     <ClInclude Include="Game.h" />
     <ClCompile Include="GLHooks.cpp" />
     <ClInclude Include="Globals.h" />
-    <ClInclude Include="GameSettings.h" />
     <ClInclude Include="Hooks.h" />
     <ClInclude Include="LuaUtils.h" />
     <ClInclude Include="Menus.h" />

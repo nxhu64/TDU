@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ShowAllFiles>false</ShowAllFiles>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LocalDebuggerCommand>Game exe here</LocalDebuggerCommand>
-    <LocalDebuggerWorkingDirectory>Game Folder Here</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerCommand>E:\SteamLibrary\steamapps\common\Teardown 0.7.1\teardown.exe.unpacked.exe</LocalDebuggerCommand>
+    <LocalDebuggerWorkingDirectory>E:\SteamLibrary\steamapps\common\Teardown 0.7.1</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LocalDebuggerCommand>Game exe here</LocalDebuggerCommand>
-    <LocalDebuggerWorkingDirectory>Game Folder Here</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerCommand>E:\SteamLibrary\steamapps\common\Teardown 0.7.1\teardown.exe.unpacked.exe</LocalDebuggerCommand>
+    <LocalDebuggerWorkingDirectory>E:\SteamLibrary\steamapps\common\Teardown 0.7.1</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

@@ -7,6 +7,7 @@
 
 #include "CSignature.h"
 #include "Globals.h"
+#include "Logger.h"
 
 namespace Memory
 {
@@ -31,7 +32,6 @@ namespace Memory
 		return true;
 	}
 
-
 	inline DWORD64 dwFindPattern(CSignature Sig)
 	{
 		MODULEINFO moduleInfo = { 0 };
@@ -50,6 +50,7 @@ namespace Memory
 				return (DWORD64)lReadPtr(dwBaseAddress + i, 1);
 			}
 		}
+
 		assert(!"dwFindPattern return == nullptr");
 		return 0;
 	}

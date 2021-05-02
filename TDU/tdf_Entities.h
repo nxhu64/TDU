@@ -28,12 +28,10 @@ namespace Teardown
 
 		inline Entity* GetEntityById(uint16_t iEntityId)
 		{
-			small_vector<Entity*>* vEntityList = &g_Game->m_Scene->m_Entities;
-
-			if (!iEntityId || iEntityId > vEntityList->size() || iEntityId <= 0)
+			if (!iEntityId || iEntityId > g_Game->m_Scene->m_Entities.size() || iEntityId <= 0)
 				return 0;
 
-			DWORD64 dwEntityPointer = (DWORD64)vEntityList->begin() + (0x8 * iEntityId);
+			DWORD64 dwEntityPointer = (DWORD64)g_Game->m_Scene->m_Entities.begin() + (0x8 * iEntityId);
 			return *(Entity**)dwEntityPointer;
 		}
 

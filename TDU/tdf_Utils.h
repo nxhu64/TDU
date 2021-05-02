@@ -33,7 +33,7 @@ namespace Teardown
 			small_string ssType;
 			small_string ssPath(ccPath);
 
-			tdGetFilePath(g_Game->pPathManager, &ssRet, &ssPath, &ssType);
+			tdGetFilePath(g_Game->m_PathMgr, &ssRet, &ssPath, &ssType);
 			return ssRet.c_str();
 		}
 

@@ -34,7 +34,7 @@ namespace Logger
 		va_list args;
 		va_start(args, fmt);
 
-		int rc = vsnprintf(buff, sizeof(buff), fmt, args);
+		vsnprintf(buff, sizeof(buff), fmt, args);
 		va_end(args);
 
 		switch (eType)

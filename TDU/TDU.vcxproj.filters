@@ -254,9 +254,6 @@
     <ClInclude Include="CSignature.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Signatures.h">
-      <Filter>Teardown\Functions</Filter>
-    </ClInclude>
     <ClInclude Include="Memory.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -287,9 +284,6 @@
     <ClInclude Include="Game.h">
       <Filter>Teardown\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="GameSettings.h">
-      <Filter>Teardown\Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Teardown\Classes</Filter>
     </ClInclude>
@@ -317,5 +311,6 @@
     <ClInclude Include="LuaFunctions.h">
       <Filter>TDU\Lua</Filter>
     </ClInclude>
+    <ClInclude Include="Signatures.h" />
   </ItemGroup>
 </Project>

@@ -7,12 +7,12 @@
 class CScene
 {
 public:
-	char pad_0008[136]; //0x0008
-	small_vector<void*> m_Projectiles;					//0x00B0
-	CEnvironment* m_Environment;						//0x00C0
-	glm::vec3 m_SpawnPos;								//0x00C8
-	char pad_00D4[20];									//0x00D4
-	Light* m_Flashlight;								//0x00E8
+	char pad_0008[136];									//0x0008
+	small_vector<void*> m_Projectiles;					//0x0090
+	CEnvironment* m_Environment;						//0x00A0
+	glm::vec3 m_SpawnPos;								//0x00A8
+	char pad_00D4[20];									//0x00B4
+	Light* m_Flashlight;								//0x00C8
 	char pad_00D0[56];									//0x00D0
 	void* m_CurrentVehicle;								//0x0108
 	void* m_CurrentScreen;								//0x0110
